@@ -21,10 +21,10 @@ app.use("/api/siteInfo", require("./routes/siteInfoRoutes"));
 
 app.use(errorHandler);
 
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
-       next();
- });
+// app.use(function(req, res, next) {
+//     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
+//        next();
+//  });
 
 app.listen(port, () => {
     console.log(`server running on the port ${port}`);
