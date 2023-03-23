@@ -1,0 +1,21 @@
+
+
+
+.chart-grid-date{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    /* background-color: aqua; */
+    /* align-self:center; */
+}
+
+.chart-grid-site{
+
+}
+
+.chart-grid-kpi{
+    border-color: red;
+    /* border-style: solid; */
+    border-width: 1px;
+    /* height: 700; */
+}
