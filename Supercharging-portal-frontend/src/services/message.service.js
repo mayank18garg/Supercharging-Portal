@@ -1,6 +1,7 @@
 import { callExternalApi } from "./external-api.service";
 
-const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
+// const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
+const apiServerUrl = '';
 
 export const getSessionData = async ({dateData, trt_Id}) => {
 

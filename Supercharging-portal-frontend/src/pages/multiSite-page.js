@@ -3,8 +3,8 @@ import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 import { getAdminResource } from "../services/message.service";
 import { AdminMenu } from "../components/admin-menu";
-// import ViewSiteAdmin from "../components/admin-components/viewSiteAdmin";
-// import ViewSiteUser from "../components/multiview-site";
+import ViewSiteAdmin from "../components/admin-components/viewSiteAdmin";
+import ViewSiteUser from "../components/multiview-site";
 import { useAuth0 } from "@auth0/auth0-react";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 
@@ -56,11 +56,11 @@ export const MultiSitePage = () => {
       <SideNavBar viewSiteEnable={true} isAdmin={isAdmin} />
       <div className="content-layout">
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> MultiSite View</h2>
-      {/* {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
+      {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
         : (token?.find(role => userRoles.includes(role)) ? <ViewSiteUser/>
         :
         null)
-      } */}
+      }
       </div>
     </PageLayout>
     
