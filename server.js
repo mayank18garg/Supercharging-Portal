@@ -3,6 +3,7 @@ const connectDb = require("./config/dbConnection");
 const errorHandler = require("./middleware/errorHandler");
 const dotenv = require("dotenv").config();
 const cors = require('cors');
+const path = require('path');
 
 const port = process.env.PORT;
 
@@ -25,6 +26,14 @@ app.use(errorHandler);
 //     res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
 //        next();
 //  });
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static( 'Supercharging-portal-frontend/build' ));
+
+    app.get('*', (req,res) => {
+        res.sendFile(path.join(__dirname, 'Supercharging-portal-frontend', 'build', 'index.html'));
+    });
+}
 
 app.listen(port, () => {
     console.log(`server running on the port ${port}`);
