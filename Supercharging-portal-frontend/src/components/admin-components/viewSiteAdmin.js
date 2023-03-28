@@ -19,14 +19,6 @@ const columns = [
   { id: 'siteName', label: 'Site Name', width: 100 },
   { id: 'siteAddress', label: 'Site Address', width: 100 },
   {
-    id: 'userName',
-    label: 'User Name',
-    // minWidth: 100,
-    width: 100
-    // align: 'right',
-    // format: (value) => value.toLocaleString('en-US'),
-  },
-  {
     id: 'userEmail',
     label: 'User Email',
     width: 100,
@@ -120,7 +112,7 @@ export default function ViewSiteAdmin() {
                       if(column.id === 'view'){
                         return(
                           <StyledTableCell key={column.id} align={column.align}>
-                            <NavLink to='/home' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName}}> View </NavLink>
+                            <NavLink to='/home' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName, userEmail: row.userEmail}}> View </NavLink>
                           </StyledTableCell>
                         );
                       }

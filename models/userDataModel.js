@@ -4,9 +4,6 @@ const userDataSchema = mongoose.Schema({
     userEmail:{
         type: String
     },
-    contact:{
-        type: Object
-    },
     site:{
         type: Array
     }

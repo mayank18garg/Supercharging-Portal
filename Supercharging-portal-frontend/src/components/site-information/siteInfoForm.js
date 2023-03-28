@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster } from 'rsuite';
 import { getSiteInfo } from '../../services/message.service';
-import { useAuth0 } from '@auth0/auth0-react';
+// import { useAuth0 } from '@auth0/auth0-react';
 import { updateSiteInfo } from '../../services/message.service';
 
 const { StringType } = Schema.Types;
@@ -35,9 +35,9 @@ const errormessage = (
   </Message>
 );
 
-export const SiteInfoForm = ({trt_id, setSite_name}) => {
-    const { user } = useAuth0();
-    const userEmail = user.name;
+export const SiteInfoForm = ({trt_id, setSite_name, userEmail}) => {
+    // const { user } = useAuth0();
+    // const userEmail = user.name;
     const [message, setMessage] = useState({});
     const [readOnly, setReadOnly] = useState(true);
     const [formValue, setFormValue] = useState({

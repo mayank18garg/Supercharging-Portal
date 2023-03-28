@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Radio, RadioGroup } from 'rsuite';
-import { getContactInfo } from '../../services/message.service';
-import { useAuth0 } from '@auth0/auth0-react';
 import { updateContactInfo } from '../../services/message.service';
 
 const { StringType } = Schema.Types;
@@ -36,10 +34,8 @@ const errormessage = (
   </Message>
 );
 
-export const ContactInformation = ({trt_id}) => {
-    const { user } = useAuth0();
-    const userEmail = user.name;
-    const [message, setMessage] = useState({});
+export const ContactInformation = ({trt_id, userEmail}) => {
+    // const [message, setMessage] = useState({});
     const [readOnly, setReadOnly] = useState(true);
     const [contactType, setContactType] = useState("Business Partner");
     const [formValue, setFormValue] = useState({
@@ -52,30 +48,6 @@ export const ContactInformation = ({trt_id}) => {
     const toaster = useToaster();
     const placement = 'topCenter';
     const formRef = useRef();
-    useEffect(() => {
-        let isMounted = true;
-        const getMessage = async () => {
-          const {data, error} = await getContactInfo({trt_id, contactType});
-          if(!isMounted){
-            return;
-          }
-    
-          if(data){
-            setMessage(data);
-            setFormValue(data);
-          }
-    
-          if(error){
-            setMessage(data);
-          }
-        };
-    
-        getMessage();
-    
-        return () => {
-          isMounted = false;
-        };
-    }, [contactType, trt_id]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -86,17 +58,18 @@ export const ContactInformation = ({trt_id}) => {
         // console.log("inside_handleSubmit", formValue, contactType);
 
         updateContactInfo({trt_id, contactType, formValue}).then((response) => {
-            console.log("#############", response.data.firstName);
+            console.log("#############", response);
             if(response.data == null || response.data.error){
                 toaster.push(errormessage,{placement, duration: 5000} );
                 return;
             }
             else{
                 setFormValue({
-                    firstName: response.data.firstName,
-                    lastName: response.data.lastName,
-                    phone: response.data.phone,
-                    address: response.data.address
+                    firstName: "",
+                    lastName: "",
+                    phone: "",
+                    email:"",
+                    address: ""
                 })
                 toaster.push(successmessage, {placement, duration: 5000});
                 setReadOnly(!readOnly);

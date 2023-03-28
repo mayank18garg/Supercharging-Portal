@@ -11,7 +11,6 @@ const getAllUserData = asyncHandler(async (req, res) => {
                 finalData.push(
                     {
                         userEmail: data.userEmail,
-                        userName: data.contact.firstName + " " + data.contact.lastName,
                         siteName: site.siteName,
                         siteAddress: site.siteAddress,
                         trt_id: site.trt_id

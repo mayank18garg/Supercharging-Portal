@@ -11,7 +11,7 @@ import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 export const ReportIssuePage = () => {
 //   const [message, setMessage] = useState("");
   const location = useLocation();
-  console.log(location);
+  console.log("location_new:", location);
 
 
   const [issueTicketData, setissueTicketData] = useState(false);
@@ -22,14 +22,14 @@ export const ReportIssuePage = () => {
   const trt_id = location.state ? location.state.site_id : "";
   const site_name = location.state ? location.state.site_name : "";
   return (
-    <PageLayout site_id={location.state.site_id} site_name={location.state.site_name}>
-      <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name} />
+    <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}>
+      <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}/>
       <div className="content-layout">
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Report a New Issue</h2>
       <div className="form-grid-container">
         <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
         
-          <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} />
+          <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} userEmail={location.state.userEmail} />
           
         {/* <div className="content__body">
           <p id="page-description">
