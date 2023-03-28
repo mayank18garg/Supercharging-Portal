@@ -3,7 +3,6 @@ const issueTicketData = require("../models/issueTicketModel");
 
 
 const transporter = require("./emailServer");
-//   transporter.verify().then(console.log).catch(console.error);
 
 const createTicket = asyncHandler(async (req, res) => {
 
