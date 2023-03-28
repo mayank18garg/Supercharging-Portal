@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const userData = require("../models/userDataModel");
+const trtId_registeredData = require("../models/trtId_registeredModel");
 const transporter = require("./emailServer");
 
 const getAllUserData = asyncHandler(async (req, res) => {
@@ -96,7 +97,7 @@ const updateSiteInfo = asyncHandler(async (req, res) => {
 
 const createUserData = asyncHandler(async (req, res) => {
 
-    const {userEmail, contact, trtlist} = req.body;
+    const {userEmail, trtlist} = req.body;
 
     let sitearray = [];
     for(let i=0; i<trtlist.trt_id.length; i++){
@@ -110,11 +111,17 @@ const createUserData = asyncHandler(async (req, res) => {
     }
     const dataSend = {
         userEmail,
-        contact,
         site: sitearray
     }
-    // console.log(dataSend);
     const data = await userData.updateOne({userEmail: req.body.userEmail}, {$setOnInsert: dataSend}, {upsert:true});
+
+    if(data.upsertedCount){
+        for(let i=0; i<trtlist.trt_id.length; i++){
+            let trt_id = parseInt(trtlist.trt_id[i]);
+            console.log(typeof trt_id);
+            await trtId_registeredData.updateOne({trt_id: trt_id}, {$setOnInsert: {trt_id: trt_id}}, {upsert: true});
+        }
+    }
 
     res.status(201).json(data);
 

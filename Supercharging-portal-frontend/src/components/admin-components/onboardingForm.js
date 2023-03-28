@@ -3,14 +3,10 @@ import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, us
 import { createOnBoardingForm } from '../../services/message.service';
 
 
-const { StringType, ArrayType } = Schema.Types;
+const { StringType } = Schema.Types;
 
 const model = Schema.Model({
-  userEmail: StringType().isRequired('This field is required.'),
-  contactfirstName: StringType().isRequired('This field is required.'),
-  contactlastName: StringType().isRequired('This field is required.'),
-  contactAddress: StringType().isRequired('This field is required.'), 
-  contactPhone: StringType().isRequired('This field is required.'),
+  userEmail: StringType().isRequired('This field is required.')
 });
 
 function TextField(props) {
@@ -36,8 +32,7 @@ const errormessage = (
 );
 
 export const OnBoardingForm = () => {
-    // const { user } = useAuth0();
-    // const userEmail = user.name;
+
     const [trtlist, settrtlist] = useState({
         trt_id: [],
         siteName: [],
@@ -46,12 +41,7 @@ export const OnBoardingForm = () => {
         phone: []
     });
     const [formValue, setFormValue] = useState({
-        userEmail:"",
-        contactfirstName: "",
-        contactlastName: "",
-        contactAddress: "",
-        contactPhone:"",
-        site:[]
+        userEmail:""
     });
     const toaster = useToaster();
     const placement = 'topCenter';
@@ -63,30 +53,14 @@ export const OnBoardingForm = () => {
             console.error("Form Error");
             return;
         }
-        // console.log("inside_handleSubmit", formValue, trtlist);
-        
-        
-        
-            // setFormValue(formValue => ({...formValue, site: sitearray}));    
-        
-        
-        
 
         createOnBoardingForm({formValue, trtlist}).then((response) => {
+            console.log(response);
             if(response.data == null || response.data.error){
                 toaster.push(errormessage,{placement, duration: 5000} );
                 return;
             }
             else{
-                console.log(response);
-                // setFormValue({
-                //     userEmail:"",
-                //     contactfirstName: "",
-                //     contactlastName: "",
-                //     contactAddress: "",
-                //     contactPhone:"",
-                //     site: []
-                // })
                 toaster.push(successmessage, {placement, duration: 5000});
             }
         }).catch((error) => {
@@ -97,8 +71,7 @@ export const OnBoardingForm = () => {
         settrtlist({...trtlist, trt_id: data});
     }
     const handleSiteNameChange = (data) => {
-        settrtlist({...trtlist, siteName: data});   
-        // console.log(trtlist);    
+        settrtlist({...trtlist, siteName: data});
     }
     const handleSiteWebsiteChange = (data) => {
         settrtlist({...trtlist, siteWebsite: data});
@@ -113,12 +86,6 @@ export const OnBoardingForm = () => {
         <CustomProvider theme='dark'>
             <Form ref={formRef} model={model} onChange={setFormValue} formValue={formValue}>
                 <TextField name="userEmail" label="Email" />
-                <TextField name="contactfirstName" label="First Name" />
-                <TextField name="contactlastName" label="Last Name" />
-                <TextField name="contactAddress" label="Address" />
-                <TextField name="contactPhone" label="Phone" />
-                
-                
             </Form>
             <div style={{display: 'flex', flexDirection:'column', margin: 35, justifyContent:'space-between'}}>
                 <label style={{marginLeft:7}}>TRT_ID</label>

@@ -269,12 +269,6 @@ export const createOnBoardingForm = async ({formValue, trtlist}) => {
     method: "post",
     data: {
       userEmail: formValue.userEmail,
-      contact:{
-        firstName: formValue.contactfirstName,
-        lastName: formValue.contactlastName,
-        address: formValue.contactAddress,
-        phone: formValue.contactPhone
-      },
       trtlist: trtlist
     },
     headers: {
