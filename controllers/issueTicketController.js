@@ -6,12 +6,12 @@ const transporter = require("./emailServer");
 
 const createTicket = asyncHandler(async (req, res) => {
 
-    const {userEmail, title, type, trt_id, site_name} = req.body;
+    const {userEmail, title, trt_id, site_name} = req.body;
     console.log(req.body);
     console.log(typeof req.body);
     const emailText = JSON.stringify(req.body);
     // console.log(userEmail, title, type);
-    if(!userEmail || !title || !type){
+    if(!userEmail || !title){
         res.status(400);
         throw new Error("All fields are mandatory");
     }
@@ -22,7 +22,6 @@ const createTicket = asyncHandler(async (req, res) => {
         status,
         title,
         timestamp: new Date(),
-        type,
         trt_id,
         site_name
     });

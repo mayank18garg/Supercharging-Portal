@@ -9,7 +9,6 @@ const { StringType } = Schema.Types;
 
 const model = Schema.Model({
   title: StringType().isRequired('This field is required.'),
-  type: StringType().isRequired('This field is required.')
 });
 
 function TextField(props) {
@@ -24,7 +23,7 @@ function TextField(props) {
 
 const message = (
     <Message showIcon type='success' closable>
-      Form Successfully submitted!
+      Ticket Form Successfully submitted!
     </Message>
 );
 
@@ -39,7 +38,6 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
     // const userEmail = user.name;
     const [formValue, setFormValue] = useState({
         title:"",
-        type: "",
         description: ""
     });
     const toaster = useToaster();
@@ -64,12 +62,10 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         });
 
         document.getElementById("title-3").value = "";
-        document.getElementById("type-3").value = "";
         document.getElementById("description-3").value = "";
         
         setFormValue({
           title: "",
-          type: "",
           description: ""
         });         
 
@@ -79,7 +75,6 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         <CustomProvider theme='dark'>
         <Form ref={formRef} model={model} onChange={setFormValue} onSubmit={handleSubmit} formValue={formValue}>
         <TextField name="title" label="Title" />
-        <TextField name="type" label="Type" />
         <TextField name="description" label="Description" accepter={Textarea} rows={5}/>
         <ButtonToolbar>
             <Button appearance="primary" type="submit">

@@ -13,9 +13,6 @@ const issueTicketSchema = mongoose.Schema({
     timestamp:{
         type: Date
     },
-    type: {
-        type: String
-    },
     trt_id:{
         type: Number
     },

@@ -18,14 +18,6 @@ const columns = [
   { id: 'timestamp', label: 'Date', width: 100 },
   { id: 'title', label: 'Title', width: 100 },
   {
-    id: 'type',
-    label: 'Type',
-    // minWidth: 100,
-    width: 100
-    // align: 'right',
-    // format: (value) => value.toLocaleString('en-US'),
-  },
-  {
     id: 'status',
     label: 'Status',
     width: 100,
@@ -161,7 +153,7 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
           onRowsPerPageChange={handleChangeRowsPerPage}
           
         /> :
-        <span align='center'> No Data Found!</span>
+        <span align='center'> No Tickets raised!</span>
         }
     </Paper>
   );
