@@ -107,7 +107,7 @@ export default function ViewSiteAdmin() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.trt_id}>
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.trt_id + row.userEmail }>
                     {columns.map((column) => {
                       if(column.id === 'view'){
                         return(

@@ -35,8 +35,7 @@ const errormessage = (
 );
 
 export const ContactInformation = ({trt_id, userEmail}) => {
-    // const [message, setMessage] = useState({});
-    const [readOnly, setReadOnly] = useState(true);
+
     const [contactType, setContactType] = useState("Business Partner");
     const [formValue, setFormValue] = useState({
         firstName:"",
@@ -55,10 +54,9 @@ export const ContactInformation = ({trt_id, userEmail}) => {
             console.error("Form Error");
             return;
         }
-        // console.log("inside_handleSubmit", formValue, contactType);
 
         updateContactInfo({trt_id, contactType, formValue}).then((response) => {
-            console.log("#############", response);
+
             if(response.data == null || response.data.error){
                 toaster.push(errormessage,{placement, duration: 5000} );
                 return;
@@ -72,7 +70,6 @@ export const ContactInformation = ({trt_id, userEmail}) => {
                     address: ""
                 })
                 toaster.push(successmessage, {placement, duration: 5000});
-                setReadOnly(!readOnly);
             }
         }).catch((error) => {
             console.log(error);
@@ -90,22 +87,16 @@ export const ContactInformation = ({trt_id, userEmail}) => {
                     <Radio value="Prop Mgt"> Prop Mgt </Radio>
                 </RadioGroup>
             </Form.Group>
-            <Form ref={formRef} model={model} onChange={formValue => setFormValue(formValue)} formValue={formValue} readOnly={readOnly}>
+            <Form ref={formRef} model={model} onChange={formValue => setFormValue(formValue)} formValue={formValue} >
                 <TextField name="firstName" label="First Name" />
                 <TextField name="lastName" label="Last Name" />
                 <TextField name="phone" label="Phone" />
                 <TextField name="email" label="Email" />
                 <TextField name="address" label="Address" />
                 <ButtonToolbar>
-                    {
-                        readOnly ?
-                        <Button onClick={() => setReadOnly(false)}>
-                            Edit
-                        </Button> :
-                        <Button appearance='primary' type="submit" onClick={handleSubmit}>
-                            Submit
-                        </Button>
-                    }
+                  <Button appearance='primary' type="submit" onClick={handleSubmit}>
+                      Submit
+                  </Button>
                 </ButtonToolbar>
             </Form>
         </CustomProvider>

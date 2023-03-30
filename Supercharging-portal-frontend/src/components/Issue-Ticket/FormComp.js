@@ -51,6 +51,7 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
             return;
         }
         sendFormData({formValue, userEmail, trt_id, site_name }).then((response) => {
+          setissueTicketData(!issueTicketData);
           if(response.data == null){
             toaster.push(errormessage,{placement, duration: 5000} );
           }
@@ -71,7 +72,7 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
           type: "",
           description: ""
         });         
-        setissueTicketData(!issueTicketData);
+
     }
 
     return (

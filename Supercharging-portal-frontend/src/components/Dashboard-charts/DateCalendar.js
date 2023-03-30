@@ -3,7 +3,10 @@ import { DateRangePicker, CustomProvider } from 'rsuite';
 // import "rsuite/dist/rsuite.min.css";
 
 export const DateCalendar = ({dateData, setdateData}) => {
-
+    // console.log(dateData.start_date);
+    // console.log(new Date(dateData.start_date).toUTCString());
+    // const sdate = new Date(dateData.start_date).UTC();
+    // console.log(sdate);
     return(
     <CustomProvider theme="dark">
     <div className='field'>

@@ -3,6 +3,7 @@ import { getSessionData } from "../../services/message.service";
 import { Bar } from "react-chartjs-2";
 import {Chart as ChartJS} from "chart.js/auto";
 import { Colors } from "chart.js/auto";
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 export const SessionChart = ({dateData, trt_Id}) => {
     // ChartJS.register(Colors);
@@ -58,6 +59,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
             x: {
                 grid: {
                   offset: true,
+                  display: false
                 },
                 // stacked: true,
                 ticks:{
@@ -69,7 +71,11 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 // stacked: true,
                 ticks:{
                     color: "White"
-                }
+                },
+                grid:{
+                    display: false
+                },
+                display: false
             }
         },
         plugins: {
@@ -86,13 +92,24 @@ export const SessionChart = ({dateData, trt_Id}) => {
             },
             customCanvasBackgroundColor: {
                 color: 'lightGreen',
-              }
-
+            },
+            datalabels:{
+                anchor: 'center',
+                color: 'white',
+                font:{
+                    weight: 'bold',
+                    size: 14,
+                    // color: 'yellow'
+                }
+            }
+        },
+        layout:{
+            padding: 20
         }
 
     };
     
     if(!message.length) return <></>;
-    return <Bar data={userData} options={options} />;
+    return <Bar data={userData} options={options} plugins={[ChartDataLabels]} />;
 
 };

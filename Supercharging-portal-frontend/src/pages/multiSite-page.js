@@ -43,8 +43,7 @@ export const MultiSitePage = () => {
     }, [getAccessTokenSilently]);
 
     const adminRoles = ['Admin'];
-    const userRoles = ['User']
-    console.log(token);
+    const userRoles = ['User'];
     let isAdmin = false;
     if(token?.find(role => adminRoles.includes(role))){
       isAdmin= true;

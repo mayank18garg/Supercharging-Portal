@@ -11,7 +11,7 @@ import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 
 export const DashboardPage = () => {
   const location = useLocation();
-  const [dateData, setdateData] = useState({start_date: "2018-02-04", end_date: "2018-03-03"});
+  const [dateData, setdateData] = useState({start_date: "2023-01-01", end_date: "2023-01-21"});
 
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
@@ -31,11 +31,11 @@ export const DashboardPage = () => {
           </div>
         {/* </div> */}
         
-        <div className= "chart-grid-kpi" style={{width:700}}>
+        <div className= "chart-grid-kpi" style={{minWidth:800}}>
           <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
 
-        <div style={{width:700}}>
+        <div className="chart-grid-session" style={{minWidth:800}}>
           <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
         

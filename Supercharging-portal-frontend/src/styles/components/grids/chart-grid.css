@@ -14,8 +14,18 @@
 }
 
 .chart-grid-kpi{
-    border-color: red;
-    /* border-style: solid; */
+    border-color: white;
+    border-style: solid;
     border-width: 1px;
     /* height: 700; */
+    /* background-color:ivory; */
+}
+
+.chart-grid-session{
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    display: flex;
+    justify-content: center;
+    /* flex: 0 0 1; */
 }
