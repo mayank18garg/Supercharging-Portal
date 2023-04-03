@@ -21,3 +21,24 @@ I have established a secure connection for the application. The secure connectio
 To enhance the user experience and security of our portal, I have implemented customized views for admins and regular users. Upon logging in, admins are directed to a comprehensive dashboard that provides them with access to all administrative tools and features. They can view and manage all the sites that have been onboarded, as well as onboard new users.
 
 In contrast, regular users are directed to their respective sites only, where they can access and utilize the portal's features as needed. By implementing role-based access control, I ensure that users only have access to the features and tools relevant to their roles, enhancing the security of our portal.
+
+### 5. Production Deployment on Heroku
+I have successfully deployed the Supercharging Portal for Landlords to Heroku, which is a cloud-based Platform as a Service (PaaS) that enables us to host, deploy, and manage our application in a scalable and reliable manner.
+
+Heroku allows us to easily manage our application's dependencies, configuration, and scaling, while providing features such as automatic scaling and load balancing, HTTPS encryption, and continuous integration and deployment (CI/CD) pipelines.
+
+To deploy the application to Heroku, I used its built-in Git integration and Heroku CLI tools to push our code and configuration to the Heroku Git repository. I then configured the application to use the MongoDB database, which provides with a reliable and scalable database solution.
+
+I also set up environment variables in Heroku to store sensitive information such as API keys and database credentials, ensuring that the application remains secure.
+
+Overall, deploying the Supercharging Portal for Landlords to Heroku has allowed me to easily manage and scale our application in a reliable and secure manner, and I am confident that our users will have a seamless experience.
+
+### 6. Sync our application database to Tesla's database
+Tesla's database contains crucial data that is necessary for our web application to function properly. However, due to security concerns, we were not able to directly access Tesla's database from our public server. This posed a challenge for us in terms of ensuring that our application always had access to the most up-to-date information from Tesla's database.
+
+To address this issue, I created a script that periodically synchronizes the data between Tesla's database and our application's database. This script ensures that the data in our database is always consistent with the data in Tesla's database.
+
+It is critical that this synchronization is accurate and reliable. To achieve this, I have implemented rigorous testing and error handling procedures to ensure that any discrepancies or issues are promptly identified and resolved. Additionally, the script is designed to run at regular intervals to ensure that any changes in Tesla's database are quickly reflected in our application's database.
+
+Overall, this solution allows us to maintain a seamless flow of data between Tesla's database and our application, while ensuring the security and integrity of both systems.
+
