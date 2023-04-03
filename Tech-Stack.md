@@ -1,3 +1,4 @@
+# Technology Stack Employed for Development of the Supercharging Portal for Landlords
 ### 1. Tech Stack
 The Supercharging Portal for Landlords has been built using the MERN stack, which is a popular combination of technologies for developing full-stack web applications. MERN stands for MongoDB, Express.js, React.js, and Node.js. Here's a brief overview of each component of the MERN stack:
 
