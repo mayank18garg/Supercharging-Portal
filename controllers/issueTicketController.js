@@ -29,7 +29,7 @@ const createTicket = asyncHandler(async (req, res) => {
     res.status(201).json(data);
 
     const message = {
-        from: "mgargtesla@gmail.com",
+        from: "no-reply@supercharging-portal.com",
         to: "mgarg20@asu.edu",
         subject: `Issue Ticket from ${userEmail}`,
         text: emailText

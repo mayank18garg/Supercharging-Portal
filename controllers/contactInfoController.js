@@ -6,7 +6,7 @@ const updateContactInfo = asyncHandler(async (req, res) => {
     const emailText = JSON.stringify(req.body);
 
     const message = {
-        from: "mgargtesla@gmail.com",
+        from: "no-reply@supercharging-portal.com",
         to: "mgarg20@asu.edu",
         subject: `Update Contact Info`,
         text: emailText

@@ -82,7 +82,7 @@ const updateSiteInfo = asyncHandler(async (req, res) => {
 
     const emailText = JSON.stringify(formValue);
     const message = {
-        from: "mgargtesla@gmail.com",
+        from: "no-reply@supercharging-portal.com",
         to: "mgarg20@asu.edu",
         subject: `Update Site Info -- ${userEmail} ${trt_id}`,
         text: emailText
