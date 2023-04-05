@@ -77,15 +77,16 @@ const getKpiData = asyncHandler(async (req, res) => {
     // console.log(data);
 
     let hourList = [0,3,6,9,12,15,18,21];
+    let hourLabel = ["00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00"];
     let i = 0;
     const ans = [];
     for (hour in hourList){
         if(i < data.length && hourList[hour] === data[i].hour){
-            ans.push({"hour": data[i].hour, "cummulative_kwhs": data[i].cummulative_kwhs, "cummulative_sessions": data[i].cummulative_sessions});
+            ans.push({"hour": hourLabel[hour], "cummulative_kwhs": data[i].cummulative_kwhs, "cummulative_sessions": data[i].cummulative_sessions});
             i++;
         }
         else{
-            ans.push({"hour": hourList[hour], "cummulative_kwhs": 0, "cummulative_sessions": 0});
+            ans.push({"hour": hourLabel[hour], "cummulative_kwhs": 0, "cummulative_sessions": 0});
         }
     }
     // if(!data || Object.keys(data).length === 0){
