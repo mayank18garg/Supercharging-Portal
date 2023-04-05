@@ -99,7 +99,7 @@ const getSessionData = asyncHandler(async (req, res) => {
     while( current_date <= ends_date){
         // current_date.setMinutes(current_date.setMinutes() + current_date.getTimezoneOffset());
         let date = current_date.toISOString().split('T')[0];
-        console.log(current_date);
+        // console.log(current_date);
         if(i < data.length && date === data[i].week){
             ans.push({"new_user" : data[i].new_user, "returning_user" : data[i].distinct_user - data[i].new_user, "week" : date});
             i++;

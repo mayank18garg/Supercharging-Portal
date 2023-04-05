@@ -61,7 +61,7 @@ export const MultiSitePage = () => {
         null)
       }
       </div>
-      <h3 id="page-title" className="content__title" style={{textAlign: 'center'}}> CSS and responsive web design work in progress.</h3>
+      {/* <h3 id="page-title" className="content__title" style={{textAlign: 'center'}}> CSS and responsive web design work in progress.</h3> */}
     </PageLayout>
     
     // </div>
