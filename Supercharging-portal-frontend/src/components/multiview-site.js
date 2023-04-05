@@ -86,7 +86,7 @@ export default function ViewSiteUser() {
   };
 
   return (
-    <Paper sx={{ width: 700, overflow: 'hidden', background:"transparent", borderColor: "white", borderStyle: "solid" }}>
+    <Paper sx={{ width: 700, overflow: 'hidden', background:"transparent", borderColor: "pale", borderStyle: "solid" }}>
       <TableContainer sx={{ maxHeight: 4400, borderColor: "white" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

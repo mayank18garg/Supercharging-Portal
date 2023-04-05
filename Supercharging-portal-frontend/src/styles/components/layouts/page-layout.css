@@ -3,13 +3,20 @@
   flex-direction: column;
   /* align-items: last baseline; */
   /* justify-content: left; */
-  height: 100%;
-  width: 100%;
+  height: 100% !important;
+  width: 100% !important;
   background-color: white;
   /* --bg-image:  url("../../../utils/peakpx.jpg"); */
    /* --bg-image-opacity: 0.4; */
    /* position:relative; */
-  
+   /* position: -webkit-fixed; */
+   position: -webkit-fixed;
+   position: fixed;
+   top:0;
+   bottom: 0;
+   transform: translate(0);
+   /* z-index: 100000; */
+   /* transform: translate3d(0,0,0); */
 }
 /* .page-layout::after{
   content: "";

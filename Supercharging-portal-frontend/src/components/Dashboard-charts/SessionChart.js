@@ -44,13 +44,23 @@ export const SessionChart = ({dateData, trt_Id}) => {
             // backgroundColor: ["#7538EC"],
             barPercentage: 0.5,
             borderRadius: 5,
+            fill: false,
+            backgroundColor: "#EC932F",
+            borderColor: "#EC932F",
+            hoverBackgroundColor: "#EC932F",
+            hoverBorderColor: "#EC932F"
         },
         {
             label: "Returning_User", 
             data: message.map((data) => data.returning_user),
             // backgroundColor: "#800517",
             barPercentage: 0.5,
-            borderRadius: 5
+            borderRadius: 5,
+            fill: false,
+            backgroundColor: "#71B37C",
+            borderColor: "#71B37C",
+            hoverBackgroundColor: "#71B37C",
+            hoverBorderColor: "#71B37C",
         }]
     };
 
@@ -64,7 +74,18 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 // stacked: true,
                 ticks:{
                     color: "black",
+                    font:{
+                        style: 'normal'
+                    }
                     // backdropColor: "white"
+                },
+                title:{
+                    text: 'Start of week',
+                    display: true,
+                    color: 'black',
+                    font:{
+                        style: 'normal',
+                    }
                 }
             },
             y: {
@@ -95,9 +116,9 @@ export const SessionChart = ({dateData, trt_Id}) => {
             },
             datalabels:{
                 anchor: 'center',
-                color: 'white',
+                color: 'black',
                 font:{
-                    weight: 'bold',
+                    // weight: 'bold',
                     size: 14,
                     // color: 'yellow'
                 }

@@ -69,7 +69,7 @@ export const KPIChart = ({dateData, trt_Id}) => {
                 formatter: Math.round,
                 color: 'black',
                 font: {
-                    weight: 'bold',
+                    // weight: 'bold',
                     size: 14,
                 },
                 offset: 5,
@@ -91,10 +91,11 @@ export const KPIChart = ({dateData, trt_Id}) => {
             datalabels:{
                 anchor: 'center',
                 // align: 'top',
-                color: 'white',
+                color: 'black',
                 font: {
-                    weight: 'bold',
+                    // weight: 'bold',
                     size: 14,
+                    // color: 'black'
                 },
             },
             order: 2
@@ -105,6 +106,14 @@ export const KPIChart = ({dateData, trt_Id}) => {
     const options = {
         scales: {
             x: {
+                title:{
+                    text: "24-hour time",
+                    color: "black",
+                    display: true,
+                    font:{
+                        style: 'normal'
+                    }
+                },
                 grid: {
                   offset: true,
                   display: false
@@ -113,6 +122,10 @@ export const KPIChart = ({dateData, trt_Id}) => {
                 ticks:{
                     color: "black",
                     // backdropColor: "white"
+                    size: 12,
+                    font:{
+                        style: 'normal'
+                    }
                 },
             },
             A: {
