@@ -9,9 +9,38 @@ import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 
+const getStartDate = () => {
+  const now = new Date();
+  const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1);
+  const firstWeekDate = new Date(previousMonth.getFullYear(), previousMonth.getMonth(), 1);
+  const dayOfWeek = firstWeekDate.getDay();
+
+  let diff = firstWeekDate.getDate() - dayOfWeek + (dayOfWeek === 0 ? -5:0);
+  console.log(firstWeekDate);
+  if (diff > 7) {
+    diff += 7;
+  }
+  const startingDateOfFirstFullWeek = new Date(firstWeekDate.setDate(diff));
+  // console.log(startingDateOfFirstFullWeek);
+  return startingDateOfFirstFullWeek;
+}
+const getEndDate = () => {
+  const now = new Date(); // create a new date object for the current date and time
+const previousMonth = new Date(now.getFullYear(), now.getMonth() - 1); // create a new date object for the previous month
+const lastDayOfPreviousMonth = new Date(previousMonth.getFullYear(), previousMonth.getMonth() + 1, 0); // create a new date object for the last day of the previous month
+const lastSundayOfPreviousMonth = new Date(lastDayOfPreviousMonth); // create a new date object for the last day of the previous month
+lastSundayOfPreviousMonth.setDate(lastSundayOfPreviousMonth.getDate() - (lastSundayOfPreviousMonth.getDay() + 1) % 7); // set the date to the last Sunday of the previous month
+
+// console.log(lastSundayOfPreviousMonth); // prints the date of the last Sunday of the previous month to the console
+return lastSundayOfPreviousMonth;
+
+}
 export const DashboardPage = () => {
   const location = useLocation();
-  const [dateData, setdateData] = useState({start_date: "2023-01-01", end_date: "2023-01-21"});
+  const [dateData, setdateData] = useState({
+    start_date: getStartDate(), 
+    end_date: getEndDate()
+  });
 
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){

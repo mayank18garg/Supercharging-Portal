@@ -3,15 +3,25 @@ import { callExternalApi } from "./external-api.service";
 // const apiServerUrl = process.env.REACT_APP_API_SERVER_URL;
 const apiServerUrl = '';
 
-export const getSessionData = async ({dateData, trt_Id}) => {
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
+export const getSessionData = async ({dateData, trt_Id}) => {
+  
+  const start_date = formatDate(dateData.start_date);
+  const end_date = formatDate(dateData.end_date);
+  console.log(start_date, end_date);
   const config = {
     url: `${apiServerUrl}/api/sessionData/`,
     method: "GET",
     params:{
         trt_id: trt_Id,
-        start_date: dateData.start_date,
-        end_date: dateData.end_date
+        start_date: start_date,
+        end_date: end_date
     },
     // headers: {
     //   "content-type": "application/json",
@@ -28,48 +38,16 @@ export const getSessionData = async ({dateData, trt_Id}) => {
 
 export const getKPIData = async ({dateData, trt_Id}) => {
 
+  const start_date = formatDate(dateData.start_date);
+  const end_date = formatDate(dateData.end_date);
   const config = {
     url: `${apiServerUrl}/api/kpiData/`,
     method: "GET",
     params:{
         trt_id: trt_Id,
-        start_date: dateData.start_date,
-        end_date: dateData.end_date
+        start_date: start_date,
+        end_date: end_date
     },
-    // headers: {
-    //   "content-type": "application/json",
-    // },
-  };
-
-  const { data, error } = await callExternalApi({ config });
-
-  return {
-    data: data || null,
-    error,
-  };
-};
-
-export const getProtectedResource = async () => {
-  const config = {
-    url: `${apiServerUrl}/api/messages/protected`,
-    method: "GET",
-    headers: {
-      "content-type": "application/json",
-    },
-  };
-
-  const { data, error } = await callExternalApi({ config });
-
-  return {
-    data: data || null,
-    error,
-  };
-};
-
-export const getAdminResource = async () => {
-  const config = {
-    url: `${apiServerUrl}/api/messages/admin`,
-    method: "GET",
     headers: {
       "content-type": "application/json",
     },
