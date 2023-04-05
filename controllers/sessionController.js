@@ -14,7 +14,7 @@ const getSessionData = asyncHandler(async (req, res) => {
     const trt_id = parseInt(req.query.trt_id);
     const start_date = req.query.start_date;
     const end_date = req.query.end_date;
-    console.log(start_date, end_date);
+    // console.log(start_date, end_date);
     // console.log(typeof start_date, start_date);
     // console.log(typeof end_date, end_date);
     // console.log(typeof trt_id, trt_id);
@@ -90,37 +90,37 @@ const getSessionData = asyncHandler(async (req, res) => {
     
     // console.log(data);
     // console.log(start_date, end_date);
-    // let current_date = new Date(start_date);
-    // let ends_date = new Date(end_date);
+    let current_date = new Date(start_date);
+    let ends_date = new Date(end_date);
     // console.log(current_date,ends_date);
-    // let i = 0;
-    const ans = [];
+    let i = 0;
+    let ans = [];
 
-    // while( current_date <= ends_date){
-    //     // current_date.setMinutes(current_date.setMinutes() + current_date.getTimezoneOffset());
-    //     let date = current_date.toISOString().split('T')[0];
-    //     console.log(current_date);
-    //     if(i < data.length && date === data[i].week){
-    //         ans.push({"new_user" : data[i].new_user, "returning_user" : data[i].distinct_user - data[i].new_user, "week" : date});
-    //         i++;
-    //     }
-    //     else ans.push({"new_user" : 0, "returning_user" : 0, "week" : date});
+    while( current_date <= ends_date){
+        // current_date.setMinutes(current_date.setMinutes() + current_date.getTimezoneOffset());
+        let date = current_date.toISOString().split('T')[0];
+        console.log(current_date);
+        if(i < data.length && date === data[i].week){
+            ans.push({"new_user" : data[i].new_user, "returning_user" : data[i].distinct_user - data[i].new_user, "week" : date});
+            i++;
+        }
+        else ans.push({"new_user" : 0, "returning_user" : 0, "week" : date});
         
-    //     current_date.setDate(current_date.getDate() + 7);
-    // }
+        current_date.setDate(current_date.getDate() + 7);
+    }
 
     // if(!data || Object.keys(data).length === 0){
     //     res.status(404);
     //     throw new Error("Session_data not found");
     // }
 
-    for(let i=0; i<data.length; i++){
-        ans.push({
-            "new_user": data[i].new_user,
-            "returning_user": data[i].distinct_user - data[i].new_user,
-            "week": data[i].week
-        })
-    }
+    // for(let i=0; i<data.length; i++){
+    //     ans.push({
+    //         "new_user": data[i].new_user,
+    //         "returning_user": data[i].distinct_user - data[i].new_user,
+    //         "week": data[i].week
+    //     })
+    // }
     res.status(200).json(ans);
 });
 

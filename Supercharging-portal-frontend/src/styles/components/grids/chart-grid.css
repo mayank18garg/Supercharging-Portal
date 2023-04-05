@@ -14,7 +14,7 @@
 }
 
 .chart-grid-kpi{
-    border-color: white;
+    border-color: black;
     border-style: solid;
     border-width: 1px;
     /* height: 700; */
@@ -22,7 +22,7 @@
 }
 
 .chart-grid-session{
-    border-color: white;
+    border-color: black;
     border-style: solid;
     border-width: 1px;
     display: flex;

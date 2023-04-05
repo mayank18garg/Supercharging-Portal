@@ -72,7 +72,7 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
     }
 
     return (
-        <CustomProvider theme='dark'>
+        <CustomProvider theme='lite'>
         <Form ref={formRef} model={model} onChange={setFormValue} onSubmit={handleSubmit} formValue={formValue}>
         <TextField name="title" label="Title" />
         <TextField name="description" label="Description" accepter={Textarea} rows={5}/>

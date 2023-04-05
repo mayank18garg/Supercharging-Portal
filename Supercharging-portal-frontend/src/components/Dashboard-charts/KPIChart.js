@@ -67,7 +67,7 @@ export const KPIChart = ({dateData, trt_Id}) => {
                 anchor: 'center',
                 align: 'top',
                 formatter: Math.round,
-                color: 'white',
+                color: 'black',
                 font: {
                     weight: 'bold',
                     size: 14,
@@ -111,7 +111,7 @@ export const KPIChart = ({dateData, trt_Id}) => {
                 },
                 stacked: true,
                 ticks:{
-                    color: "white",
+                    color: "black",
                     // backdropColor: "white"
                 },
             },
@@ -147,7 +147,7 @@ export const KPIChart = ({dateData, trt_Id}) => {
                         // size: 12
                     },
                     // paddingBottom: 5000,
-                    color: "white"
+                    color: "black"
                 }
             },
             colors:{

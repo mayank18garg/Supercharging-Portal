@@ -73,8 +73,8 @@
 
   border: 0.1rem solid var(--tan);
   color: var(--white);
-  /* background: var(--indigo); */
-  background: tan;
+  background: var(--blue);
+  /* background: tan; */
   width: 50%;
   font-size: 1.6rem;
 

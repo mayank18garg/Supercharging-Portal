@@ -63,14 +63,14 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 },
                 // stacked: true,
                 ticks:{
-                    color: "White",
+                    color: "black",
                     // backdropColor: "white"
                 }
             },
             y: {
                 // stacked: true,
                 ticks:{
-                    color: "White"
+                    color: "black"
                 },
                 grid:{
                     display: false
@@ -84,7 +84,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
                     font: {
                         family: "Helvetica",
                     },
-                    color: "white"
+                    color: "black"
                 }
             },
             colors:{

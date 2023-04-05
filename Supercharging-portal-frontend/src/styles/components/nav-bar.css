@@ -5,7 +5,7 @@
   flex-shrink: 0;
   width: 100%;
 
-  box-shadow: rgb(90 95 102) 0-1.5px 0 inset;
+  /* box-shadow: rgb(90 95 102) 0-1.5px 0 inset; */
 
   z-index: 300;
   /* background-color: var(--black); */
@@ -18,13 +18,14 @@
   align-items: center;
   /* justify-content: space-evenly; */
   /* flex-shrink: 0; */
-
+  /* flex-grow: 1; */
   /* responsive */
 
   height: 80px;
-  max-width: 1600px;
+  /* max-width: 1600px; */
 
-  padding: 0px 3px 0px 45px;
+  /* padding: 0px 3px 0px 45px; */
+  padding-left: 5px;
   margin: 0;
 }
 
@@ -33,11 +34,11 @@
   align-items: center;
 
   height: 100%;
-  flex-grow: 1;
+  /* flex-grow: 1; */
 
   /* responsive */
 
-  margin-right: 64px;
+  /* margin-right: 64px; */
   margin-left: 1rem;
 }
 
@@ -56,7 +57,8 @@
   flex: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  /* justify-content: flex-start; */
+  /* flex-grow: 1; */
 }
 
 .nav-bar__tab {
@@ -65,14 +67,20 @@
   justify-content: center;
 
   margin-right: 24px;
-
+  /* flex-grow: 1; */
   font-weight: 500;
-  font-size: 20px;
+  font-size: medium;
   line-height: 16px;
 }
-
+.nav-bar__tab:first-child{
+  margin-left: 15px;
+  font-size: large;
+}
+.nav-bar__tab:nth-child(2){
+  font-weight: normal;
+}
 .nav-bar__tab:last-child {
-  margin-right: 0;
+  margin-left: auto;
 }
 
 .nav-bar__tab--active {
@@ -87,7 +95,7 @@
 }
 
 .nav-bar__tab:hover {
-  color: var(--white);
+  color: var(--black);
 }
 
 .nav-bar__icon {
@@ -98,6 +106,11 @@
   display: flex;
   margin-left: 24px;
   /* align-self: self-end; */
+}
+
+.nav-bar__buttoncont{
+  display: flex;
+  margin-right: 20px;
 }
 
 @media only screen and (max-width: 640px) and (hover: none) {
@@ -240,13 +253,13 @@
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
-  justify-content: flex-start;
-  align-items: center;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
   height: 40%;
   margin-top: 8rem;
-  background-color: tan;
-  padding: 1rem;
-  border-style: solid;
+  background-color: white;
+  /* padding: 1rem; */
+  /* border-style: solid; */
   border-radius: 2px;
   border-radius: 10px;
   flex: 0 0 1;
@@ -257,12 +270,13 @@
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
-  align-items: center;
+  /* align-items: center; */
   /* margin-right: 24px; */
 
   font-weight: 50000000;
-  font-size: 17px;
+  font-size: 16px;
   margin: 2rem;
+  color: black;
   /* line-height: 16px; */
 }
 
@@ -283,5 +297,5 @@
 }
 
 .side-nav-bar__tab:hover {
-  color:seashell;
+  color: black;
 }

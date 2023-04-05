@@ -7,7 +7,6 @@ export const NavBarBrand = ({site_id, site_name, userEmail}) => {
       <NavLink to="/home" state={{site_id:site_id, site_name:site_name, userEmail:userEmail}}>
         <img
           className="nav-bar__logo"
-          // src="https://cdn.auth0.com/blog/hub/code-samples/hello-world/auth0-logo.svg"
           src = {logoUrl}
           alt="Tesla"
           width="122"

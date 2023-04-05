@@ -78,7 +78,7 @@ export const ContactInformation = ({trt_id, userEmail}) => {
     }
 
     return (
-        <CustomProvider theme='dark'>
+        <CustomProvider theme='lite'>
             <Form.Group controlId="contactType">
                 <RadioGroup name="contactType" inline value={contactType} onChange={setContactType}>
                     <Radio value="Business Partner">Business Partner</Radio>

@@ -19,7 +19,7 @@ export const DateCalendar = ({dateData, setdateData}) => {
 
 
     return(
-    <CustomProvider theme="dark">
+    <CustomProvider theme="lite">
     <div className='field'>
         <DateRangePicker 
         cleanable={false}
