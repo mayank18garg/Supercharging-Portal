@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 import { SessionChart } from "../components/Dashboard-charts/SessionChart";
@@ -8,6 +8,7 @@ import { SitePicker } from "../components/Dashboard-charts/SitePicker";
 import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
+import ReactGA from 'react-ga4';
 
 const getStartDate = () => {
   const now = new Date();
@@ -35,13 +36,27 @@ lastSundayOfPreviousMonth.setDate(lastSundayOfPreviousMonth.getDate() - (lastSun
 return lastSundayOfPreviousMonth;
 
 }
+
+function usePageViews() {
+  let location = useLocation();
+  useEffect(() => {
+    if(!window.GA_INITIALIZED){
+      ReactGA.initialize("G-TW2E53VBE0");
+      window.GA_INITIALIZED = true;
+    }
+    // ReactGA.set({ page: location.pathname });
+    // ReactGA.pageview(location.pathname);
+    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Dashboard" });
+  }, [location]);
+}
+
 export const DashboardPage = () => {
   const location = useLocation();
   const [dateData, setdateData] = useState({
     start_date: getStartDate(), 
     end_date: getEndDate()
   });
-
+  usePageViews();
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;

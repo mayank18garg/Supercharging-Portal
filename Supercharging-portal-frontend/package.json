@@ -20,6 +20,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-component-form": "^3.1.2",
     "react-dom": "^18.2.0",
+    "react-ga4": "^2.1.0",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "react-virtuoso": "^4.1.0",

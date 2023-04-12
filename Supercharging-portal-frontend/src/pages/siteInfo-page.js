@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { PageLayout } from "../components/page-layout";
 
@@ -7,7 +7,19 @@ import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { SiteInfoForm } from "../components/site-information/siteInfoForm";
 
-// import {  } from "react-router-dom";
+function usePageViews() {
+  let location = useLocation();
+  useEffect(() => {
+    if(!window.GA_INITIALIZED){
+      ReactGA.initialize("G-TW2E53VBE0");
+      window.GA_INITIALIZED = true;
+    }
+    // ReactGA.set({ page: location.pathname });
+    // ReactGA.pageview(location.pathname);
+    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Site Information" });
+  }, [location]);
+}
+
 export const SiteInfoPage = () => {
   const location = useLocation();
   console.log("location_new:", location);
@@ -17,7 +29,7 @@ export const SiteInfoPage = () => {
     return <Navigate replace to="/" />;
   }
 
-
+  usePageViews();
     return ( <PageLayout site_id={location.state.site_id} site_name={site_name} userEmail={location.state.userEmail} > 
     <SideNavBar site_id={location.state.site_id} site_name={site_name} userEmail={location.state.userEmail} />
     <div className="content-layout">
