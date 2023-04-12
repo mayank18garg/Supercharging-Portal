@@ -19,12 +19,12 @@ function usePageViews() {
 }
 
 export const ProtectedPage = () => {
+  usePageViews();
   const location = useLocation();
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
   }
-  usePageViews();
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail} >
        <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name}  userEmail={location.state.userEmail} />

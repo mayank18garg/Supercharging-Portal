@@ -17,26 +17,26 @@ import { PrivateRoute } from "./utils/private-route";
 import {Chart as ChartJS} from "chart.js/auto";
 import { Colors } from "chart.js/auto";
 import { OnboardingPage } from "./pages/onboarding-page";
-import ReactGA from "react-ga4";
-function usePageViews() {
-  let location = useLocation();
-  useEffect(() => {
-    if(!window.GA_INITIALIZED){
-      ReactGA.initialize("G-TW2E53VBE0");
-      window.GA_INITIALIZED = true;
-    }
-    // ReactGA.set({ page: location.pathname });
-    // ReactGA.pageview(location.pathname);
-    // ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Report Issue" });
-  }, [location]);
-}
+// import ReactGA from "react-ga4";
+// function usePageViews() {
+//   let location = useLocation();
+//   useEffect(() => {
+//     if(!window.GA_INITIALIZED){
+//       ReactGA.initialize("G-TW2E53VBE0");
+//       window.GA_INITIALIZED = true;
+//     }
+//     // ReactGA.set({ page: location.pathname });
+//     // ReactGA.pageview(location.pathname);
+//     // ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Report Issue" });
+//   }, [location]);
+// }
 
 export const App = () => {
   ChartJS.register(Colors);
   ChartJS.defaults.font.size = 18;
   ChartJS.defaults.font.style = 'oblique';
   ChartJS.defaults.color = "Green";
-  usePageViews();
+  // usePageViews();
   const { isLoading } = useAuth0();
 
   if (isLoading) {

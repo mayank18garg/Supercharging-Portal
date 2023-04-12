@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Radio, RadioGroup } from 'rsuite';
 import { updateContactInfo } from '../../services/message.service';
+import ReactGA from 'react-ga4';
+
 
 const { StringType } = Schema.Types;
 
@@ -54,7 +56,10 @@ export const ContactInformation = ({trt_id, userEmail}) => {
             console.error("Form Error");
             return;
         }
-
+        ReactGA.event({
+          category: "Submit button",
+          action: "Contact Information Submitted"
+        })
         updateContactInfo({trt_id, contactType, formValue}).then((response) => {
 
             if(response.data == null || response.data.error){

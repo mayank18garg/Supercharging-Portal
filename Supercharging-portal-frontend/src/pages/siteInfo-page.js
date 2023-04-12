@@ -22,6 +22,7 @@ function usePageViews() {
 }
 
 export const SiteInfoPage = () => {
+  usePageViews();
   const location = useLocation();
   console.log("location_new:", location);
 
@@ -30,7 +31,6 @@ export const SiteInfoPage = () => {
     return <Navigate replace to="/" />;
   }
 
-  usePageViews();
     return ( <PageLayout site_id={location.state.site_id} site_name={site_name} userEmail={location.state.userEmail} > 
     <SideNavBar site_id={location.state.site_id} site_name={site_name} userEmail={location.state.userEmail} />
     <div className="content-layout">
