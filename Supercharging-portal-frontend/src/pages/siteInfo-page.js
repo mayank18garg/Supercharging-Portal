@@ -6,6 +6,7 @@ import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { SiteInfoForm } from "../components/site-information/siteInfoForm";
+import ReactGA from 'react-ga4';
 
 function usePageViews() {
   let location = useLocation();

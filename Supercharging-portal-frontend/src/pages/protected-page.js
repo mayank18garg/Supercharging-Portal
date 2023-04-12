@@ -3,7 +3,7 @@ import { PageLayout } from "../components/page-layout";
 import { Navigate, useLocation } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { ContactInformation } from "../components/contact-information/contactInformation";
-
+import ReactGA from 'react-ga4';
 
 function usePageViews() {
   let location = useLocation();

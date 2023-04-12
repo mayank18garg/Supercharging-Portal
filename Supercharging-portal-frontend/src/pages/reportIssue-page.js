@@ -7,6 +7,7 @@ import { FormComp } from "../components/Issue-Ticket/FormComp";
 import IssueTictable from "../components/Issue-Ticket/IssueTictable";
 import { Navigate, useLocation } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
+import ReactGA from 'react-ga4';
 
 function usePageViews() {
   let location = useLocation();
