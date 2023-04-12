@@ -22,7 +22,7 @@ function usePageViews() {
 }
 
 export const SiteInfoPage = () => {
-  usePageViews();
+  // usePageViews();
   const location = useLocation();
   console.log("location_new:", location);
 

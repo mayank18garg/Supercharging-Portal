@@ -56,7 +56,7 @@ export const DashboardPage = () => {
     start_date: getStartDate(), 
     end_date: getEndDate()
   });
-  usePageViews();
+  // usePageViews();
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;

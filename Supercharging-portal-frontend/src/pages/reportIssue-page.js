@@ -26,7 +26,7 @@ export const ReportIssuePage = () => {
 //   const [message, setMessage] = useState("");
   const location = useLocation();
   // console.log("location_new:", location);
-  usePageViews();
+  // usePageViews();
 
   const [issueTicketData, setissueTicketData] = useState(false);
 
