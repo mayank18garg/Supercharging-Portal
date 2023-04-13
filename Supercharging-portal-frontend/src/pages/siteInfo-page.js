@@ -6,25 +6,18 @@ import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { SiteInfoForm } from "../components/site-information/siteInfoForm";
-import ReactGA from 'react-ga4';
-
-function usePageViews() {
-  let location = useLocation();
-  useEffect(() => {
-    if(!window.GA_INITIALIZED){
-      ReactGA.initialize("G-TW2E53VBE0");
-      window.GA_INITIALIZED = true;
-    }
-    // ReactGA.set({ page: location.pathname });
-    // ReactGA.pageview(location.pathname);
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Site Information" });
-  }, [location]);
-}
+import { Mixpanel } from "../Mixpanel";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export const SiteInfoPage = () => {
-  // usePageViews();
   const location = useLocation();
-  console.log("location_new:", location);
+
+  const {user} = useAuth0();
+  useEffect(() => {
+    Mixpanel.identify(user.email);
+    Mixpanel.track('SiteInformation_Page');
+    Mixpanel.people.set({$email: user.email});
+  },[]);
 
   const [site_name, setSite_name] = useState((location.state == null || location.state.site_id == null) ? "" : location.state.site_name);
   if(location.state == null || location.state.site_id == null){

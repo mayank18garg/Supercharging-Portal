@@ -7,26 +7,19 @@ import { FormComp } from "../components/Issue-Ticket/FormComp";
 import IssueTictable from "../components/Issue-Ticket/IssueTictable";
 import { Navigate, useLocation } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
-import ReactGA from 'react-ga4';
+import { Mixpanel } from "../Mixpanel";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function usePageViews() {
-  let location = useLocation();
-  useEffect(() => {
-    if(!window.GA_INITIALIZED){
-      ReactGA.initialize("G-TW2E53VBE0");
-      window.GA_INITIALIZED = true;
-    }
-    // ReactGA.set({ page: location.pathname });
-    // ReactGA.pageview(location.pathname);
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Report Issue" });
-  }, [location]);
-}
 
 export const ReportIssuePage = () => {
-//   const [message, setMessage] = useState("");
   const location = useLocation();
-  // console.log("location_new:", location);
-  // usePageViews();
+
+  const {user} = useAuth0();
+  useEffect(() => {
+    Mixpanel.identify(user.email);
+    Mixpanel.track('ReportIssue_Page');
+    Mixpanel.people.set({$email: user.email});
+  },[]);
 
   const [issueTicketData, setissueTicketData] = useState(false);
 

@@ -3,26 +3,21 @@ import { PageLayout } from "../components/page-layout";
 import { Navigate, useLocation } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { ContactInformation } from "../components/contact-information/contactInformation";
-import ReactGA from 'react-ga4';
+import { Mixpanel } from "../Mixpanel";
+import { useAuth0 } from "@auth0/auth0-react";
 
-function usePageViews() {
-  let location = useLocation();
-  useEffect(() => {
-    if(!window.GA_INITIALIZED){
-      ReactGA.initialize("G-TW2E53VBE0");
-      window.GA_INITIALIZED = true;
-    }
-    // ReactGA.set({ page: location.pathname });
-    // ReactGA.pageview(location.pathname);
-    ReactGA.set({userId: location.state.userEmail});
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Contact_Information" });
-  }, [location]);
-}
 
 export const ProtectedPage = () => {
-  usePageViews();
+
   const location = useLocation();
-  console.log("location_new:", location);
+
+  const {user} = useAuth0();
+  useEffect(() => {
+    Mixpanel.identify(user.email);
+    Mixpanel.track('ContactInformation_Page');
+    Mixpanel.people.set({$email: user.email});
+  },[]);
+
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
   }

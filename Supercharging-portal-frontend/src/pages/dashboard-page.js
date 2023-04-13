@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { CodeSnippet } from "../components/code-snippet";
 import { PageLayout } from "../components/page-layout";
 import { SessionChart } from "../components/Dashboard-charts/SessionChart";
 import { KPIChart } from "../components/Dashboard-charts/KPIChart";
 import { DateCalendar } from "../components/Dashboard-charts/DateCalendar";
-import { SitePicker } from "../components/Dashboard-charts/SitePicker";
 import { useLocation} from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
-import ReactGA from 'react-ga4';
+import { Mixpanel } from "../Mixpanel";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const getStartDate = () => {
   const now = new Date();
@@ -37,30 +36,27 @@ return lastSundayOfPreviousMonth;
 
 }
 
-function usePageViews() {
-  let location = useLocation();
-  useEffect(() => {
-    if(!window.GA_INITIALIZED){
-      ReactGA.initialize("G-TW2E53VBE0");
-      window.GA_INITIALIZED = true;
-    }
-    // ReactGA.set({ page: location.pathname });
-    // ReactGA.pageview(location.pathname);
-    ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Dashboard" });
-  }, [location]);
-}
 
 export const DashboardPage = () => {
   const location = useLocation();
+
+  const {user} = useAuth0();
+  useEffect(() => {
+    Mixpanel.identify(user.email);
+    Mixpanel.track('Dashboard_Page');
+    Mixpanel.people.set({$email: user.email});
+  },[]);
+
   const [dateData, setdateData] = useState({
     start_date: getStartDate(), 
     end_date: getEndDate()
   });
-  // usePageViews();
+
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
   }
+
 
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}>
