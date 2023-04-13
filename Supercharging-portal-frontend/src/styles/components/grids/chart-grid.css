@@ -25,7 +25,7 @@
     border-color: black;
     border-style: solid;
     border-width: 1px;
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     /* flex: 0 0 1; */
 }

@@ -75,11 +75,11 @@ export const DashboardPage = () => {
           </div>
         {/* </div> */}
         
-        <div className= "chart-grid-kpi" style={{minWidth:800}}>
+        <div className= "chart-grid-kpi" style={{width:800}}>
           <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
 
-        <div className="chart-grid-session" style={{minWidth:800}}>
+        <div className="chart-grid-session" style={{width:800}}>
           <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
         

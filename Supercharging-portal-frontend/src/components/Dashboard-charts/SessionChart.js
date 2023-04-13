@@ -4,6 +4,7 @@ import { Bar } from "react-chartjs-2";
 import {Chart as ChartJS} from "chart.js/auto";
 import { Colors } from "chart.js/auto";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { CSVLink } from "react-csv";
 
 export const SessionChart = ({dateData, trt_Id}) => {
     // ChartJS.register(Colors);
@@ -131,6 +132,9 @@ export const SessionChart = ({dateData, trt_Id}) => {
     };
     
     if(!message.length) return <></>;
-    return <Bar data={userData} options={options} plugins={[ChartDataLabels]} />;
+    return <>
+            <Bar data={userData} options={options} plugins={[ChartDataLabels]} />
+            <CSVLink data={message} style={{color: "black"}}>Download CSV</CSVLink>
+        </>;
 
 };

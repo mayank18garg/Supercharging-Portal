@@ -3,6 +3,7 @@ import { getKPIData } from "../../services/message.service";
 import { Bar, Line} from "react-chartjs-2";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {Chart as ChartJS, scales} from "chart.js/auto";
+import {CSVLink} from "react-csv"
 const plugin = {
     beforeInit: function (chart) {
       // Get reference to the original fit function
@@ -176,7 +177,8 @@ export const KPIChart = ({dateData, trt_Id}) => {
     if(!message.length) return <></>;
     return (<>
             {/* <Line data={userData} options={options} /> */}
-            <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />;
+            <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
+            <CSVLink data={message} style={{color: "black"}}>Download CSV</CSVLink>
         </>);
 
 };
