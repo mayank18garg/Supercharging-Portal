@@ -14,12 +14,13 @@ function usePageViews() {
     }
     // ReactGA.set({ page: location.pathname });
     // ReactGA.pageview(location.pathname);
+    ReactGA.set({userId: location.state.userEmail});
     ReactGA.send({ hitType: "pageview", page: location.pathname, title: "Contact_Information" });
   }, [location]);
 }
 
 export const ProtectedPage = () => {
-  // usePageViews();
+  usePageViews();
   const location = useLocation();
   console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
