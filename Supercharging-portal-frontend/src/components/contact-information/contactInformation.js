@@ -40,6 +40,7 @@ const errormessage = (
   </Message>
 );
 
+
 export const ContactInformation = ({trt_id, userEmail}) => {
 
     const [contactType, setContactType] = useState("Business Partner");
@@ -54,10 +55,14 @@ export const ContactInformation = ({trt_id, userEmail}) => {
     const placement = 'topCenter';
     const formRef = useRef();
 
+    const handleContactType = (value) => {
+      setContactType(value);
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(!formRef.current.check()){
-            console.error("Form Error");
+        if(!formRef.current.check() || contactType == null){
+            console.error("Form Error: Please fill all the fields");
             return;
         }
         ReactGA.event({
@@ -66,7 +71,7 @@ export const ContactInformation = ({trt_id, userEmail}) => {
         })
         updateContactInfo({trt_id, contactType, formValue}).then((response) => {
 
-            if(response.data == null || response.data.error){
+            if(response == null || response.data == null || response.data.error){
                 toaster.push(errormessage,{placement, duration: 5000} );
                 return;
             }
@@ -78,6 +83,7 @@ export const ContactInformation = ({trt_id, userEmail}) => {
                     email:"",
                     address: ""
                 })
+                setContactType(null);
                 toaster.push(successmessage, {placement, duration: 5000});
             }
         }).catch((error) => {
@@ -102,7 +108,12 @@ export const ContactInformation = ({trt_id, userEmail}) => {
                 <TextField name="phone" label="Phone" />
                 <TextField name="email" label="Email" />
                 <TextField name="address" label="Address" />
-                <TextField name="contactType" label="Contact Type" accepter={SelectPicker} block={true} data={contactTypeData}/>
+                <TextField name="contactType" label="Contact Type" accepter={SelectPicker} block={true} data={contactTypeData} onChange={handleContactType}
+                  defaultValue="Business Partner"
+                  value={contactType}
+                  cleanable={false}
+                  searchable={false}
+                 />
                 <ButtonToolbar>
                   <Button appearance='primary' type="submit" onClick={handleSubmit}>
                       Submit
