@@ -134,7 +134,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
     if(!message.length) return <></>;
     return <>
             <Bar data={userData} options={options} plugins={[ChartDataLabels]} />
-            <CSVLink data={message} style={{color: "black"}}>Download CSV</CSVLink>
+            <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
         </>;
 
 };

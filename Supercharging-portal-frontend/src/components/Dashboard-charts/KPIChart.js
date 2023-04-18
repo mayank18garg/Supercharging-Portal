@@ -178,7 +178,7 @@ export const KPIChart = ({dateData, trt_Id}) => {
     return (<>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
-            <CSVLink data={message} style={{color: "black"}}>Download CSV</CSVLink>
+            <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
         </>);
 
 };
