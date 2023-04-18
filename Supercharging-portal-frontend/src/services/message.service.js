@@ -61,11 +61,21 @@ export const getKPIData = async ({dateData, trt_Id}) => {
   };
 };
 
-export const sendFormData = async ({formValue, userEmail, trt_id, site_name}) => {
+export const sendFormData = async ({formValue, userEmail, trt_id, site_name, filelist}) => {
 
-  console.log("Type:", formValue.textarea);
+  // console.log("Type:", formValue.textarea);
   // const dataSend = JSON.stringify(formValue)
-
+  let formdata = new FormData();
+  formdata.append("userEmail", userEmail);
+  formdata.append("trt_id", trt_id);
+  formdata.append("site_name", site_name);
+  formdata.append("formValue", formValue);
+  formdata.append("file", filelist);
+  // console.log("FileValue:", filelist);
+  // console.log(formdata);
+  for (var pair of formdata.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]); 
+}
   const config = {
     url: `${apiServerUrl}/api/issueTicket/`,
     method: "post",
@@ -74,16 +84,9 @@ export const sendFormData = async ({formValue, userEmail, trt_id, site_name}) =>
     //     start_date: dateData.start_date,
     //     end_date: dateData.end_date
     // },
-    data: {
-      userEmail: userEmail,
-      trt_id: trt_id,
-      site_name: site_name,
-      title: formValue.title,
-      type: formValue.type,
-      description: formValue.description
-    },
+    data: formdata,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": 'multipart/form-data',
     },
     
   };

@@ -25,7 +25,7 @@ function TextField(props) {
 
 const successmessage = (
     <Message showIcon type='success' closable>
-      Change will appear to Drivers in 48 hours!
+      Change will appear to Drivers in 72 hours!
     </Message>
 );
 

@@ -4,7 +4,7 @@ import logoUrl from './logo.svg';
 export const NavBarBrand = ({site_id, site_name, userEmail}) => {
   return (
     <div className="nav-bar__brand">
-      <NavLink to="/home" state={{site_id:site_id, site_name:site_name, userEmail:userEmail}}>
+      <NavLink to="/dashboard" state={{site_id:site_id, site_name:site_name, userEmail:userEmail}}>
         <img
           className="nav-bar__logo"
           src = {logoUrl}

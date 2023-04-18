@@ -1,9 +1,24 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster } from 'rsuite';
+import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Uploader } from 'rsuite';
 import { sendFormData } from '../../services/message.service';
-// import { useAuth0 } from '@auth0/auth0-react';
 
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
+
+const customLocale = {
+  fileType: 'File type is not supported',
+  fileSize: 'File size exceeds the limit',
+  chooseFile: 'Select File',
+  upload: 'Upload',
+  uploading: 'Uploading...',
+  uploaded: 'Uploaded',
+  uploadFailed: 'Upload failed',
+  cancel: 'Cancel',
+  retry: 'Retry',
+  delete: 'Delete',
+  preview: 'Preview',
+  drag: 'Drag files here',
+  dragTips: 'Release to upload',
+};
 
 const { StringType } = Schema.Types;
 
@@ -33,6 +48,12 @@ const errormessage = (
   </Message>
 );
 
+const maxFileErrormessage = (
+  <Message showIcon type='error' closable>
+    Error: File size exceeds the limit of 2MB.
+  </Message>
+);
+
 export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData, userEmail}) => {
     // const { user } = useAuth0();
     // const userEmail = user.name;
@@ -40,15 +61,36 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         title:"",
         description: ""
     });
+    const [filelist, setFilelist] = useState(null);
     const toaster = useToaster();
-    const placement = 'topCenter';
+    const placement = 'topEnd';
     const formRef = useRef();
+    const handleFileUpload = (file) => {
+      console.log(file);
+      if(file.length > 0){
+      console.log(file.size);
+      setFilelist(file[0].blobFile);
+      // setFilelist(file.blobFile);
+      }
+      else{
+        setFilelist(null);
+      }
+    };
+
+    const handleShouldUpload = (file) => {
+      console.log(file[0].blobFile.size);
+      if(file[0].blobFile.size > 2 * 1024 * 1024){
+        toaster.push(maxFileErrormessage,{placement, duration: 5000} );
+        return false;
+      }
+      return true;
+    }
     const handleSubmit = (e) => {
         if(!formRef.current.check()){
             console.error("Form Error");
             return;
         }
-        sendFormData({formValue, userEmail, trt_id, site_name }).then((response) => {
+        sendFormData({formValue, userEmail, trt_id, site_name, filelist }).then((response) => {
           setissueTicketData(!issueTicketData);
           if(response.data == null){
             toaster.push(errormessage,{placement, duration: 5000} );
@@ -67,6 +109,7 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         setFormValue({
           title: "",
           description: ""
+          // file: null
         });         
 
     }
@@ -76,6 +119,8 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         <Form ref={formRef} model={model} onChange={setFormValue} onSubmit={handleSubmit} formValue={formValue}>
         <TextField name="title" label="Title" />
         <TextField name="description" label="Description" accepter={Textarea} rows={5}/>
+        {/* <Uploader action="" onChange={handleFileUpload} multiple={false} /> */}
+        <TextField name="file" label="Upload" accepter={Uploader} onChange={handleFileUpload} action="#" autoUpload={false} shouldQueueUpdate={handleShouldUpload} />
         <ButtonToolbar>
             <Button appearance="primary" type="submit">
             Submit

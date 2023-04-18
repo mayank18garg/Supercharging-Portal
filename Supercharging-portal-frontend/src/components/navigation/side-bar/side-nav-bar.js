@@ -13,9 +13,9 @@ export const SideNavBar = ({site_id, site_name, viewSiteEnable, userEmail, isAdm
             }
         </div> :
         <div className="side-nav-bar__container">
-            <SideNavBarTab path="/home" label="Home" site_id={site_id} site_name={site_name} userEmail={userEmail} />
+            {/* <SideNavBarTab path="/home" label="Home" site_id={site_id} site_name={site_name} userEmail={userEmail} /> */}
             <SideNavBarTab path="/dashboard" label="Dashboard" site_id={site_id} site_name={site_name} userEmail={userEmail} />
-            <SideNavBarTab path="/reportIssue" label="Issue a New Request" site_id={site_id} site_name={site_name} userEmail={userEmail} />
+            <SideNavBarTab path="/reportIssue" label="Report an Issue" site_id={site_id} site_name={site_name} userEmail={userEmail} />
             <SideNavBarTab path="/protected" label="Contact Information" site_id={site_id} site_name={site_name} userEmail={userEmail} />
             <SideNavBarTab path="/siteInfo" label="Site Information" site_id={site_id} site_name={site_name} userEmail={userEmail} />
         </div>

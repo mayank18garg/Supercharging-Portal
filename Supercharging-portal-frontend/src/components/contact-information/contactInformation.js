@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Radio, RadioGroup } from 'rsuite';
+import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Radio, RadioGroup, SelectPicker } from 'rsuite';
 import { updateContactInfo } from '../../services/message.service';
 import ReactGA from 'react-ga4';
 
@@ -14,6 +14,10 @@ const model = Schema.Model({
   address: StringType().isRequired('This field is required.')
 });
 
+const contactTypeData = ['Business Partner', 'Legal Notice Address', 'Emergency', 'Prop Mgt'].map(
+  item => ({label: item, value: item})
+);
+
 function TextField(props) {
   const { name, label, accepter, ...rest } = props;
   return (
@@ -26,7 +30,7 @@ function TextField(props) {
 
 const successmessage = (
     <Message showIcon type='success' closable>
-      Contact will be updated in 48 hours!
+      Contact will be updated in 72 hours!
     </Message>
 );
 
@@ -84,20 +88,21 @@ export const ContactInformation = ({trt_id, userEmail}) => {
 
     return (
         <CustomProvider theme='lite'>
-            <Form.Group controlId="contactType">
+            {/* <Form.Group controlId="contactType">
                 <RadioGroup name="contactType" inline value={contactType} onChange={setContactType}>
                     <Radio value="Business Partner">Business Partner</Radio>
                     <Radio value="Legal Notice Address">Legal Notice Address</Radio>
                     <Radio value="Emergency">Emergency</Radio>
                     <Radio value="Prop Mgt"> Prop Mgt </Radio>
                 </RadioGroup>
-            </Form.Group>
+            </Form.Group> */}
             <Form ref={formRef} model={model} onChange={formValue => setFormValue(formValue)} formValue={formValue} >
                 <TextField name="firstName" label="First Name" />
                 <TextField name="lastName" label="Last Name" />
                 <TextField name="phone" label="Phone" />
                 <TextField name="email" label="Email" />
                 <TextField name="address" label="Address" />
+                <TextField name="contactType" label="Contact Type" accepter={SelectPicker} block={true} data={contactTypeData}/>
                 <ButtonToolbar>
                   <Button appearance='primary' type="submit" onClick={handleSubmit}>
                       Submit

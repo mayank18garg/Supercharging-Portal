@@ -5,38 +5,52 @@ const issueTicketData = require("../models/issueTicketModel");
 const transporter = require("./emailServer");
 
 const createTicket = asyncHandler(async (req, res) => {
-
-    const {userEmail, title, trt_id, site_name} = req.body;
-    console.log(req.body);
-    console.log(typeof req.body);
+    const {userEmail, trt_id} = req.body;
+    console.log("email:", userEmail);
+    console.log("files:", req.file);
+    console.log("body:", req.body);
+    // console.log(req.formdata);
+    // console.log("mayank", req.body.formValue.file);
+    // console.log("sanket", req.body);
+    // const {userEmail, title, trt_id, site_name} = req.body;
+    // const imageBuffer = Buffer.from(req.body.formValue.file);
+    // console.log(imageBuffer);
+    // console.log(req.body);
+    // console.log(req);
+    // console.log(typeof req.body);
     const emailText = JSON.stringify(req.body);
-    // console.log(userEmail, title, type);
-    if(!userEmail || !title){
-        res.status(400);
-        throw new Error("All fields are mandatory");
-    }
-    const status = "In Progress";
+    // // console.log(userEmail, title, type);
+    // if(!userEmail || !title){
+    //     res.status(400);
+    //     throw new Error("All fields are mandatory");
+    // }
+    // const status = "In Progress";
 
-    const data = await issueTicketData.create({
-        userEmail,
-        status,
-        title,
-        timestamp: new Date(),
-        trt_id,
-        site_name
-    });
+    // const data = await issueTicketData.create({
+    //     userEmail,
+    //     status,
+    //     title,
+    //     timestamp: new Date(),
+    //     trt_id,
+    //     site_name
+    // });
 
-    res.status(201).json(data);
+    res.status(201).json({});
 
     const message = {
         from: "no-reply@supercharging-portal.com",
         to: "mgarg20@asu.edu",
         subject: `Issue Ticket from ${userEmail}`,
-        text: emailText
+        text: emailText,
+        attachments: [{
+            filename: req.file.originalname,
+            content: req.file.buffer,
+            // encoding: 'base64'
+        }]
     };
-    // const stringMessage = JSON.stringify(message);
-    // console.log(stringMessage);
-    transporter.verify().then(console.log).catch(console.error);
+    // // const stringMessage = JSON.stringify(message);
+    // // console.log(stringMessage);
+    // transporter.verify().then(console.log).catch(console.error);
     transporter.sendMail(message).then(info => {
         console.log({info});
       }).catch(console.error);
@@ -45,6 +59,7 @@ const createTicket = asyncHandler(async (req, res) => {
 });
 
 const getissueTickets = asyncHandler(async (req, res) => {
+    // console.log("bjlahfalj");
 
     // const userEmail = req.query.userEmail;
     const trt_id = parseInt(req.query.trt_id);

@@ -112,7 +112,7 @@ export default function ViewSiteUser() {
                       if(column.id === 'view'){
                         return(
                           <StyledTableCell key={column.id} align={column.align}>
-                            <NavLink to='/home' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName, userEmail: userEmail}}> View </NavLink>
+                            <NavLink to='/dashboard' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName, userEmail: userEmail}}> View </NavLink>
                           </StyledTableCell>
                         );
                       }
