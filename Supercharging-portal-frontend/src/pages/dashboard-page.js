@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { Mixpanel } from "../Mixpanel";
 import { useAuth0 } from "@auth0/auth0-react";
+import { MedianStallOccChart } from "../components/Dashboard-charts/MedianStallOccChart";
 
 const getStartDate = () => {
   const now = new Date();
@@ -77,6 +78,10 @@ export const DashboardPage = () => {
 
         <div className="chart-grid-session" style={{width:800}}>
           <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
+        </div>
+
+        <div className= "chart-grid-kpi" style={{width:800}}>
+          <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
         
       </div>

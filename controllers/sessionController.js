@@ -46,13 +46,15 @@ const getSessionData = asyncHandler(async (req, res) => {
                 "week_bin_charge_date":{
                     "$dateTrunc":{
                         "date": "$charge_date",
-                        "unit" : "week"
+                        "unit" : "week",
+                        "startOfWeek": "Monday"
                     }
                 },
                 "week_bin_min_charge_date":{
                     "$dateTrunc":{
                         "date": "$min_charge_date",
-                        "unit": "week"
+                        "unit": "week",
+                        "startOfWeek": "Monday"
                     }
                 }
             }
