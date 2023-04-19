@@ -19,6 +19,7 @@ app.use("/api/userData", require("./routes/userDataRoutes"));
 app.use("/api/contactInfo", require("./routes/contactInformationRoutes"));
 // app.use("/api/contactInformation", require("./routes/contactInformationRoutes"));
 app.use("/api/siteInfo", require("./routes/siteInfoRoutes"));
+app.use("/api/medianStallData", require("./routes/medianStallOccRoutes"));
 
 app.use(errorHandler);
 
