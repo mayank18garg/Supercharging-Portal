@@ -290,3 +290,28 @@ export const getMedianStallOccData = async ({dateData, trt_Id}) => {
     error,
   };
 };
+
+export const getUptimePercData = async ({dateData, trt_Id}) => {
+
+  const start_date = formatDate(dateData.start_date);
+  const end_date = formatDate(dateData.end_date);
+  const config = {
+    url: `${apiServerUrl}/api/uptimePercData/`,
+    method: "GET",
+    params:{
+        trt_id: trt_Id,
+        start_date: start_date,
+        end_date: end_date
+    },
+    headers: {
+      "content-type": "application/json",
+    },
+  };
+
+  const { data, error } = await callExternalApi({ config });
+
+  return {
+    data: data || null,
+    error,
+  };
+};

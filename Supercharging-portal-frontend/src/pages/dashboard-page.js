@@ -9,6 +9,7 @@ import { SideNavBar } from "../components/navigation/side-bar/side-nav-bar";
 import { Mixpanel } from "../Mixpanel";
 import { useAuth0 } from "@auth0/auth0-react";
 import { MedianStallOccChart } from "../components/Dashboard-charts/MedianStallOccChart";
+import { UptimePercChart } from "../components/Dashboard-charts/UptimePercChart";
 
 const getStartDate = () => {
   const now = new Date();
@@ -66,11 +67,11 @@ export const DashboardPage = () => {
         
         <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Dashboard</h2>
         
-        {/* <div className="chart-grid-input"> */}
+        
           <div className="chart-grid-date">
             <DateCalendar dateData = {dateData} setdateData = {setdateData} />
           </div>
-        {/* </div> */}
+        
         
         <div className= "chart-grid-kpi" style={{width:800}}>
           <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
@@ -82,6 +83,10 @@ export const DashboardPage = () => {
 
         <div className= "chart-grid-kpi" style={{width:800}}>
           <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
+        </div>
+
+        <div className= "chart-grid-kpi" style={{width:800}}>
+          <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} />
         </div>
         
       </div>

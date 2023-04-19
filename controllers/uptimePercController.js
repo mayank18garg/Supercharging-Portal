@@ -1,14 +1,14 @@
 const asyncHandler = require("express-async-handler");
-const medianStallOccData = require("../models/medianStallOccModel");
+const uptimePercData = require("../models/uptimePercModel");
 
 
-const getMedianStallOccData = asyncHandler(async (req, res) => {
+const getUptimePercData = asyncHandler(async (req, res) => {
 
     const trt_id = parseInt(req.query.trt_id);
     const start_date = req.query.start_date;
     const end_date = req.query.end_date;
     // console.log(start_date, end_date, trt_id);
-    const data = await medianStallOccData.aggregate([
+    const data = await uptimePercData.aggregate([
         {
             "$match":{
                 "trt_id": trt_id,
@@ -37,11 +37,11 @@ const getMedianStallOccData = asyncHandler(async (req, res) => {
         let date = current_date.toISOString().split('T')[0];
         // console.log(date);
         if(i < data.length && date == data[i].event_dt){
-            ans.push({"median": data[i].median.toFixed(2), "stallOccupancy": data[i].stall_occupancy, "week": date});
+            ans.push({"uptime_perc": data[i].uptime_perc.toFixed(2), "week": date});
             i++;
         }
         else{
-            ans.push({"median": 0, "stallOccupancy": 0, "week": date});
+            ans.push({"uptime_perc": 0, "week": date});
         }
 
         current_date.setDate(current_date.getDate() + 7);
@@ -50,4 +50,4 @@ const getMedianStallOccData = asyncHandler(async (req, res) => {
     res.status(200).json(ans);
 });
 
-module.exports = { getMedianStallOccData };
+module.exports = { getUptimePercData };
