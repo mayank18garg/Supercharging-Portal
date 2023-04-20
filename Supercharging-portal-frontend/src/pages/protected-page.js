@@ -31,7 +31,9 @@ export const ProtectedPage = () => {
           <span align="center"> 1. Email: abc@tesla.com </span>
           <span align="center"> 2. Phone: 123 456 7890 </span>
         </p> */}
-        <ContactInformation trt_id={location.state.site_id} />
+        <div className="contactInfoForm">
+          <ContactInformation trt_id={location.state.site_id} />
+        </div>
 
     </div>
     </PageLayout>

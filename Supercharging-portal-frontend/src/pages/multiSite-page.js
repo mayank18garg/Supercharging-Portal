@@ -54,13 +54,16 @@ export const MultiSitePage = () => {
     <PageLayout viewSiteEnable={true}>
       <SideNavBar viewSiteEnable={true} isAdmin={isAdmin} />
       <div className="content-layout">
-      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> MultiSite View</h2>
+      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Home Page</h2>
+      <div className="multiSiteTable">
       {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
         : (token?.find(role => userRoles.includes(role)) ? <ViewSiteUser/>
         :
         null)
       }
-      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Introduction</h2>
+      </div>
+      <div className="intoContent">
+      {/* <h2 id="page-title"  style={{textAlign: 'center'}}> Introduction</h2> */}
       <p id="page-description">
         <h4>Supercharger Site Host Portal</h4>
         <span>The Operations Team will be your primary point of contact after the Supercharger Station at your property officially opens to public.</span>
@@ -71,14 +74,18 @@ export const MultiSitePage = () => {
         <li>Reserving charging bay parking exclusively for Tesla cars.</li>
         <h4>Communication Guidelines </h4>
         <span>These are the guidelines to ensure a smooth opening and protect confidential information.</span>
-        <h2 style={{textAlign: 'center', fontWeight: 'bold'}}> Content in Progress</h2>
-
+        {/* <h2 style={{textAlign: 'center', fontWeight: 'bold'}}> Content in Progress</h2> */}
+        <h4>Supercharger Host Amenities </h4>
+        <span>Drivers can now tap the new Supercharger Host Amenities icon, in the Supercharger pop-up, to learn about the amenities offered at your
+              business property. By sharing your webpage with the Supercharger network, you can help provide drivers a hospitable charging experience. Follow
+              these content guidelines and submit your webpage through this form to be featured in the Supercharger pop-up. </span>
+        <h4>Access Codes</h4>
+        <span>Please submit or update access codes for restrooms or parking barriers here.</span>
+        <h4>Supercharger Contact Information </h4>
+        <span>Below are ways you can react our team. Please note the phone and email are not for general public use and should be used only by property contacts.</span>
       </p>
       </div>
-      {/* <h3 id="page-title" className="content__title" style={{textAlign: 'center'}}> CSS and responsive web design work in progress.</h3> */}
-      <div className="content-layout">
-      
-    </div>
+      </div>
     </PageLayout>
     
     // </div>

@@ -35,9 +35,9 @@ export const ReportIssuePage = () => {
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Report a New Issue</h2>
       <div className="form-grid-container">
         <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
-        
+        <div className="reportIssueForm">
           <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} userEmail={location.state.userEmail} />
-          
+          </div>
         {/* <div className="content__body">
           <p id="page-description">
             <span>

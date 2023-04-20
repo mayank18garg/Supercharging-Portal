@@ -92,7 +92,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
                     // backdropColor: "white"
                 },
                 title:{
-                    text: 'Start of week',
+                    text: 'Starting date of a week',
                     display: true,
                     color: 'black',
                     font:{

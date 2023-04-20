@@ -11,7 +11,7 @@ export const NavBar = ({site_id, site_name, userEmail, viewSiteEnable}) => {
         {/* <NavBarTabs site_id={site_id} site_name={site_name} /> */}
         {/* <h4 id="page-title" className="content__title" >{site_name}</h4> */}
         <div className="nav-bar__tabs">
-          <span className="nav-bar__tab"> | </span>
+          <span className="nav-bar__tab" style={{fontSize: 25}}> | </span>
           <span className="nav-bar__tab">Supercharging Portal</span>
           <span className="nav-bar__tab">{site_name}</span>
         </div>

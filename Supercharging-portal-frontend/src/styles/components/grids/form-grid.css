@@ -1,4 +1,33 @@
 .form-grid-container{
     display: flex;
     flex-direction: column;
+    margin: 3%;
+}
+.siteInfoForm{
+    margin: 3%;
+}
+
+.contactInfoForm{
+    margin: 3%;
+}
+
+.reportIssueForm{
+    margin: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+.intoContent{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 50%;
+}
+
+.multiSiteTable{
+    display: flex;
+    margin-top: 2%;
 }
