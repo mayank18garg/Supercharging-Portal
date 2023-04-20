@@ -37,13 +37,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-secondary);
-  font-weight: 600;
+  /* font-family: var(--font-secondary); */
+  font-family: 'Gotham Light';
+  /* font-weight: 400; */
+  font-style: normal;
   color: rgba(0, 0, 0, 0.86);
 }
 
 h1,
-h2,
+h2
 h3 {
   margin-top: 3.2rem;
   margin-bottom: 1.6rem;

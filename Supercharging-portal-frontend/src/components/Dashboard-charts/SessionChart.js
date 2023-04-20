@@ -76,7 +76,9 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 ticks:{
                     color: "black",
                     font:{
-                        style: 'normal'
+                        style: 'normal',
+                        size: 12,
+                        family: 'Gotham'
                     }
                     // backdropColor: "white"
                 },
@@ -86,6 +88,8 @@ export const SessionChart = ({dateData, trt_Id}) => {
                     color: 'black',
                     font:{
                         style: 'normal',
+                        size: 14,
+                        family: 'Gotham'
                     }
                 }
             },
@@ -104,7 +108,9 @@ export const SessionChart = ({dateData, trt_Id}) => {
             legend: {
                 labels: {
                     font: {
-                        family: "Helvetica",
+                        family: "Gotham",
+                        size: 16,
+                        style: "normal"
                     },
                     color: "black"
                 }
@@ -121,6 +127,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 font:{
                     // weight: 'bold',
                     size: 14,
+                    family: "Gotham"
                     // color: 'yellow'
                 }
             }

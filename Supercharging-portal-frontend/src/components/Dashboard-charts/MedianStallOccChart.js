@@ -72,6 +72,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                 font: {
                     // weight: 'bold',
                     size: 14,
+                    family: "Gotham"
                 },
                 offset: 5,
                 // clamp: true
@@ -96,6 +97,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                 font: {
                     // weight: 'bold',
                     size: 14,
+                    family: "Gotham"
                     // color: 'black'
                 },
             },
@@ -112,7 +114,9 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                     color: "black",
                     display: true,
                     font:{
-                        style: 'normal'
+                        style: 'normal',
+                        size: 14,
+                        family: 'Gotham'
                     }
                 },
                 grid: {
@@ -125,7 +129,9 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                     // backdropColor: "white"
                     size: 12,
                     font:{
-                        style: 'normal'
+                        style: 'normal',
+                        size: 12,
+                        family: 'Gotham'
                     }
                 },
             },
@@ -158,8 +164,9 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
             legend: {
                 labels: {
                     font: {
-                        family: "Monospace",
-                        // size: 12
+                        family: "Gotham",
+                        size: 16,
+                        style: "normal"
                     },
                     // paddingBottom: 5000,
                     color: "black"

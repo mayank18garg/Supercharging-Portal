@@ -72,23 +72,23 @@ export const DashboardPage = () => {
             <DateCalendar dateData = {dateData} setdateData = {setdateData} />
           </div>
         
-        
-        <div className= "chart-grid-kpi" style={{width:800}}>
-          <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
-        </div>
+        <div className="charts-container">
+          <div className= "chart-grid-kpi" style={{width:600}}>
+            <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
+          </div>
 
-        <div className="chart-grid-session" style={{width:800}}>
-          <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
-        </div>
+          <div className="chart-grid-session" style={{width:600}}>
+            <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
+          </div>
 
-        <div className= "chart-grid-kpi" style={{width:800}}>
-          <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
-        </div>
+          <div className= "chart-grid-kpi" style={{width:600}}>
+            <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
+          </div>
 
-        <div className= "chart-grid-kpi" style={{width:800}}>
-          <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} />
+          <div className= "chart-grid-kpi" style={{width:600}}>
+            <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} />
+          </div>
         </div>
-        
       </div>
     </PageLayout>
   );

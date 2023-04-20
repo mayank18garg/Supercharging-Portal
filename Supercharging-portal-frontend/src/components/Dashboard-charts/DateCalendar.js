@@ -29,7 +29,8 @@ export const DateCalendar = ({dateData, setdateData}) => {
         onOk={(value) => {setdateData( {start_date: value[0], end_date: value[1]} ) }}
         isoWeek={true}
         disabledDate={allowedMaxDays(56)}
-        defaultValue={[dateData.start_date, dateData.end_date]} 
+        defaultValue={[dateData.start_date, dateData.end_date]}
+        // style={{fontFamily: "Gotham"}} 
         />
     </div>
     </CustomProvider>

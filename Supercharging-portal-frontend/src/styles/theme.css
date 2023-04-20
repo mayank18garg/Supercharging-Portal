@@ -65,7 +65,8 @@
     var(--yellow) 102.78%
   );
 
-  --font-primary: "Inter", sans-serif;
+  /* --font-primary: "Inter", sans-serif; */
+  --font-primary: "Gotham Light", sans-serif;
   --font-secondary: "Space Grotesk", sans-serif;
   --font-mono: "Fira Code", monospace;
 }
