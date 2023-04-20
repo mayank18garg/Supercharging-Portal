@@ -16,10 +16,18 @@ const plugin = {
         this.height += 20 // Change the height
       }
     }
-  }
+}
+
+const placeholderData = [
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' }
+]
+
 export const UptimePercChart = ({dateData, trt_Id}) => {
     // ChartJS.register(ChartDataLabels);
-    const [message, setMessage] = useState([]);
+    const [message, setMessage] = useState(placeholderData);
 
     useEffect(() => {
         let isMounted = true;
@@ -82,12 +90,12 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
             type: "bar",
             data: message.map((data) => data.uptime_perc),
             // barPercentage: 0.5,
-            // borderRadius: 5
+            borderRadius: 5,
             fill: false,
-            backgroundColor: "#71B37C",
-            borderColor: "#71B37C",
-            hoverBackgroundColor: "#71B37C",
-            hoverBorderColor: "#71B37C",
+            backgroundColor: ["#E31937", "#E8E8EC"],
+            // borderColor: "#71B37C",
+            // hoverBackgroundColor: "#71B37C",
+            // hoverBorderColor: "#71B37C",
             yAxisID: 'B',
             datalabels:{
                 anchor: 'center',
@@ -101,12 +109,15 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
                     // color: 'black'
                 },
             },
-            order: 2
+            order: 2,
+            barPercentage: 1,
+            categoryPercentage: 1
         }
         ]
     };
 
     const options = {
+        events: [],
         scales: {
             x: {
                 title:{
@@ -179,17 +190,17 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
                 // faceOverride: true
             }
         },
-        layout:{
-            padding: 20
-        },
+        // layout:{
+        //     padding: 20
+        // },
 
     };
     
     if(!message.length) return <></>;
-    return (<>
+    return (<div>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
             <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
-        </>);
+        </div>);
 
 };

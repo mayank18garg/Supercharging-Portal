@@ -19,6 +19,11 @@
     border-style: solid;
     border-width: 1px; */
     flex-direction: column;
+    flex-grow: 0;
+    width: 35%;
+    height: 35%;
+    /* flex-shrink: 1; */
+    /* position: absolute; */
     /* height: 700; */
     /* background-color:ivory; */
     /* position: relative; */
@@ -29,16 +34,23 @@
     /* border-color: black;
     border-style: solid;
     border-width: 1px; */
+    width: 35%;
     flex-direction: column;
+    flex-grow: 0;
+    /* flex-shrink: 1; */
+    height: 35%;
+    /* position: absolute; */
     /* display: flex; */
     /* justify-content: center; */
     /* flex: 0 0 1; */
 }
 
 .csv-link {
+    display: flex;
+    flex: 1 1 1;
     background-color: #f2f2f2;
     color: #333;
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     border-radius: 5px;
     text-decoration: none;
     /* font-family: 'Gotham Light'; */
@@ -55,8 +67,8 @@
     height: 80%;
     /* flex-grow: 1; */
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    justify-content: space-around;
+    align-content: space-around;
     /* padding: 55px; */
     /* overflow: hidden; */
     /* flex: 0 0 0; */

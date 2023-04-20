@@ -16,10 +16,18 @@ const plugin = {
         this.height += 20 // Change the height
       }
     }
-  }
+}
+
+const placeholderData = [
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' }
+]
+
 export const KPIChart = ({dateData, trt_Id}) => {
     // ChartJS.register(ChartDataLabels);
-    const [message, setMessage] = useState([]);
+    const [message, setMessage] = useState(placeholderData);
 
     useEffect(() => {
         let isMounted = true;
@@ -56,12 +64,12 @@ export const KPIChart = ({dateData, trt_Id}) => {
             type: "line",
             data: message.map((data) => data.cummulative_kwhs),
             fill: false,
-            borderColor: "#EC932F",
-            backgroundColor: "#EC932F",
-            pointBorderColor: "#EC932F",
-            pointBackgroundColor: "#EC932F",
-            pointHoverBackgroundColor: "#EC932F",
-            pointHoverBorderColor: "#EC932F",
+            borderColor: "#66666A",
+            backgroundColor: "#66666A",
+            pointBorderColor: "#66666A",
+            pointBackgroundColor: "#66666A",
+            pointHoverBackgroundColor: "#66666A",
+            pointHoverBorderColor: "#66666A",
             yAxisID: 'A',
             order:1,
             datalabels:{
@@ -83,12 +91,12 @@ export const KPIChart = ({dateData, trt_Id}) => {
             type: "bar",
             data: message.map((data) => data.cummulative_sessions),
             // barPercentage: 0.5,
-            // borderRadius: 5
+            borderRadius: 5,
             fill: false,
-            backgroundColor: "#71B37C",
-            borderColor: "#71B37C",
-            hoverBackgroundColor: "#71B37C",
-            hoverBorderColor: "#71B37C",
+            backgroundColor: ["#E31937", "#E8E8EC"],
+            // borderColor: "#71B37C",
+            hoverBackgroundColor: ["#E31937", "#E8E8EC"],
+            // hoverBorderColor: "#71B37C",
             yAxisID: 'B',
             datalabels:{
                 anchor: 'center',
@@ -101,12 +109,15 @@ export const KPIChart = ({dateData, trt_Id}) => {
                     // color: 'black'
                 },
             },
-            order: 2
+            order: 2,
+            barPercentage: 1.0,
+            categoryPercentage: 1.0
         }
         ]
     };
 
     const options = {
+        events: [],
         scales: {
             x: {
                 title:{
@@ -168,24 +179,25 @@ export const KPIChart = ({dateData, trt_Id}) => {
                         style: "normal"
                     },
                     // paddingBottom: 5000,
-                    color: "black"
+                    color: "black",
+                    margin: 100
                 }
             },
             colors:{
                 // faceOverride: true
             }
         },
-        layout:{
-            padding: 20
-        },
+        // layout:{
+        //     padding: 20
+        // },
 
     };
     
     if(!message.length) return <></>;
-    return (<>
+    return (<div>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
             <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
-        </>);
+        </div>);
 
 };

@@ -6,9 +6,15 @@ import { Colors } from "chart.js/auto";
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { CSVLink } from "react-csv";
 
+const placeholderData = [
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' },
+    { new_user: 0, returning_user: 0, week: '' }
+]
 export const SessionChart = ({dateData, trt_Id}) => {
     // ChartJS.register(Colors);
-    const [message, setMessage] = useState([]);
+    const [message, setMessage] = useState(placeholderData);
 
     useEffect(() => {
         let isMounted = true;
@@ -43,29 +49,32 @@ export const SessionChart = ({dateData, trt_Id}) => {
             label: "New_User",
             data: message.map((data) => data.new_user),
             // backgroundColor: ["#7538EC"],
-            barPercentage: 0.5,
+            barPercentage: 1,
+            categoryPercentage: 1,
             borderRadius: 5,
             fill: false,
-            backgroundColor: "#EC932F",
-            borderColor: "#EC932F",
-            hoverBackgroundColor: "#EC932F",
-            hoverBorderColor: "#EC932F"
+            backgroundColor: "#E31937",
+            borderColor: "#E31937",
+            hoverBackgroundColor: "#E31937",
+            hoverBorderColor: "#E31937"
         },
         {
             label: "Returning_User", 
             data: message.map((data) => data.returning_user),
             // backgroundColor: "#800517",
-            barPercentage: 0.5,
+            barPercentage: 1,
+            categoryPercentage: 1,
             borderRadius: 5,
             fill: false,
-            backgroundColor: "#71B37C",
-            borderColor: "#71B37C",
-            hoverBackgroundColor: "#71B37C",
-            hoverBorderColor: "#71B37C",
+            backgroundColor: "#E8E8EC",
+            borderColor: "#E8E8EC",
+            hoverBackgroundColor: "#E8E8EC",
+            hoverBorderColor: "#E8E8EC",
         }]
     };
 
     const options = {
+        events: [],
         scales: {
             x: {
                 grid: {
@@ -132,16 +141,16 @@ export const SessionChart = ({dateData, trt_Id}) => {
                 }
             }
         },
-        layout:{
-            padding: 20
-        }
+        // layout:{
+        //     padding: 20
+        // }
 
     };
     
     if(!message.length) return <></>;
-    return <>
+    return <div>
             <Bar data={userData} options={options} plugins={[ChartDataLabels]} />
             <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
-        </>;
+        </div>;
 
 };

@@ -73,19 +73,19 @@ export const DashboardPage = () => {
           </div>
         
         <div className="charts-container">
-          <div className= "chart-grid-kpi" style={{width:600}}>
+          <div className= "chart-grid-kpi" >
             <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
           </div>
 
-          <div className="chart-grid-session" style={{width:600}}>
+          <div className="chart-grid-session" >
             <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
           </div>
 
-          <div className= "chart-grid-kpi" style={{width:600}}>
+          <div className= "chart-grid-kpi">
             <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
           </div>
 
-          <div className= "chart-grid-kpi" style={{width:600}}>
+          <div className= "chart-grid-kpi">
             <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} />
           </div>
         </div>
