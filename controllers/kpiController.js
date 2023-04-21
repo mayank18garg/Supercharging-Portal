@@ -6,23 +6,6 @@ const getKpiDatas = asyncHandler(async (req, res) => {
     res.status(200).json(data);
 });
 
-// const getKpiData = asyncHandler(async (req, res) => {
-//     // console.log("The request body is:", req.body);
-//     const {start_date, end_date} = req.body;
-    
-//     // Todo Check date format too
-//     // if(!start_date || !end_date){
-//     //     res.status(400);
-//     //     throw new Error("Start_date and End_date are mandatory");
-//     // }
-//     console.log(req.params.trt_id);
-//     const data = await kpiData.find({ 'trt_id': req.params.trt_id});
-//     if(!data || Object.keys(data).length === 0){
-//         res.status(404);
-//         throw new Error("KPI_data not found");
-//     }
-//     res.status(200).json(data);
-// });
 
 const getKpiData = asyncHandler(async (req, res) => {
     
