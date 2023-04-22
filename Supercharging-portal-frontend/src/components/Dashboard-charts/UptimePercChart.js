@@ -105,7 +105,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
                 font: {
                     // weight: 'bold',
                     size: 14,
-                    family: "Gotham"
+                    // family: "Gotham"
                     // color: 'black'
                 },
             },
@@ -127,7 +127,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
                     font:{
                         style: 'normal',
                         size: 14,
-                        family: 'Gotham'
+                        // family: 'Gotham'
                     }
                 },
                 grid: {
@@ -141,7 +141,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
                     font:{
                         style: 'normal',
                         size: 12,
-                        family: 'Gotham'
+                        // family: 'Gotham'
                     }
                 },
             },
@@ -178,7 +178,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
             legend: {
                 labels: {
                     font: {
-                        family: "Gotham",
+                        // family: "Gotham",
                         size: 16,
                         style: "normal"
                     },

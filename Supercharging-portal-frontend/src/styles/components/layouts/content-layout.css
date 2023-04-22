@@ -40,7 +40,7 @@
 .content__title {
   margin-top: 0;
 
-  color: var(--black);
+  /* color: var(--black); */
 }
 
 .content__body {

@@ -32,7 +32,7 @@ export const ReportIssuePage = () => {
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}>
       <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}/>
       <div className="content-layout">
-      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Report a New Issue</h2>
+      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Report an Issue</h2>
       <div className="form-grid-container">
         <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
         <div className="reportIssueForm">

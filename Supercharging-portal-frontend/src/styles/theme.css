@@ -1,7 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap");
 
 /* Theme */
-
+@font-face {
+  font-family: 'Mayank';
+  src: url(gotham/Gotham-Light.otf);
+}
+@font-face {
+  font-family: 'Mayank2';
+  src: url(gotham/Gotham-Book.otf);
+}
 :root {
   --orange: #ff4f40;
   --indigo: #635dff;
@@ -66,7 +73,8 @@
   );
 
   /* --font-primary: "Inter", sans-serif; */
-  --font-primary: "Gotham Light", sans-serif;
-  --font-secondary: "Space Grotesk", sans-serif;
+  --font-primary: "Mayank", sans-serif;
+  /* --font-secondary: "Space Grotesk", sans-serif; */
+  --font-secondary: "Mayank2", sans-serif;
   --font-mono: "Fira Code", monospace;
 }

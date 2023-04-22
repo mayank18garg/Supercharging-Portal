@@ -21,7 +21,8 @@ body {
 body {
   background-color: var(--white);
 
-  color: var(--black);
+  /* color: var(--black); */
+  color: '#66666A';
   font-family: var(--font-primary);
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -37,11 +38,13 @@ h3,
 h4,
 h5,
 h6 {
-  /* font-family: var(--font-secondary); */
-  font-family: 'Gotham Light';
-  /* font-weight: 400; */
-  font-style: normal;
-  color: rgba(0, 0, 0, 0.86);
+  font-family: var(--font-secondary);
+  /* font-family: 'Gotham Light'; */
+  /* font-weight: 600; */
+  /* font-style: normal; */
+  /* color: rgba(0, 0, 0, 0.86); */
+  color: '#66666A';
+
 }
 
 h1,

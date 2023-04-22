@@ -54,7 +54,7 @@ export const MultiSitePage = () => {
     <PageLayout viewSiteEnable={true}>
       <SideNavBar viewSiteEnable={true} isAdmin={isAdmin} />
       <div className="content-layout">
-      <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Home Page</h2>
+      <h2 className="content__title" style={{textAlign: 'center'}}> Home Page</h2>
       <div className="multiSiteTable">
       {token?.find(role => adminRoles.includes(role)) ? <ViewSiteAdmin />
         : (token?.find(role => userRoles.includes(role)) ? <ViewSiteUser/>
