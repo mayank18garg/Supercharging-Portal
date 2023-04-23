@@ -14,7 +14,6 @@ import { PageLoader } from './page-loader';
 import {NavLink} from "react-router-dom"
 import { useAuth0 } from '@auth0/auth0-react';
 import { BorderStyle } from '@mui/icons-material';
-
 // import { makeStyles } from '@mui/material/styles';
 
 const columns = [
@@ -34,10 +33,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       // backgroundColor: 'rgba(90, 80, 255, 0.85)',
       // color: theme.palette.common.white,
       fontSize: 20,
+      fontFamily: 'Gotham Book'
       // borderColor: "white"
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
+      fontFamily: 'Gotham Light'
       // borderColor: "white"
     },
   }));
@@ -87,7 +88,7 @@ export default function ViewSiteUser() {
 
   return (
     <Paper sx={{ width: 700, overflow: 'hidden', background:"transparent", borderColor: "pale", borderStyle: "solid" }}>
-      <TableContainer sx={{ maxHeight: 4400, borderColor: "white" }}>
+      <TableContainer sx={{ maxHeight: 4400, borderColor: "white", fontFamily: "arial" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -135,7 +136,12 @@ export default function ViewSiteUser() {
       </TableContainer>
         { message.length > 0 ? 
         <TablePagination
-          sx={{ '& .MuiTablePagination-selectLabel':{fontSize: 12}, '& .MuiToolbar-root':{display: 'flex', alignItems: 'baseline'}, fontSize: 12, '& .MuiTablePagination-displayedRows': {fontSize: 12}}}
+          sx={{
+            '& .MuiTablePagination-selectLabel':{fontSize: 12},
+            '& .MuiToolbar-root':{display: 'flex', alignItems: 'baseline'},
+            fontSize: 12,
+            '& .MuiTablePagination-displayedRows': {fontSize: 12},
+          }}
           rowsPerPageOptions={[2, 5, 10]}
           component="div"
           count={message.length}
@@ -143,7 +149,7 @@ export default function ViewSiteUser() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          
+          className="pagination"
         /> :
         <PageLoader />
         }

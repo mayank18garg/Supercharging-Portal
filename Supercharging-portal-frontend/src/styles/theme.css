@@ -2,11 +2,11 @@
 
 /* Theme */
 @font-face {
-  font-family: 'Mayank';
+  font-family: 'Gotham Light';
   src: url(gotham/Gotham-Light.otf);
 }
 @font-face {
-  font-family: 'Mayank2';
+  font-family: 'Gotham Book';
   src: url(gotham/Gotham-Book.otf);
 }
 :root {
@@ -73,8 +73,8 @@
   );
 
   /* --font-primary: "Inter", sans-serif; */
-  --font-primary: "Mayank", sans-serif;
+  --font-primary: "Gotham Book", sans-serif;
   /* --font-secondary: "Space Grotesk", sans-serif; */
-  --font-secondary: "Mayank2", sans-serif;
+  --font-secondary: "Gotham Book", sans-serif;
   --font-mono: "Fira Code", monospace;
 }

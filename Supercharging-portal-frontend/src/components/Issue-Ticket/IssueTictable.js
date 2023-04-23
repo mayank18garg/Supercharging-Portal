@@ -37,13 +37,15 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       // borderWidth: "thick",
       // borderWidth: 50,
       // color: theme.palette.common.white,
-      fontSize: 20
+      fontSize: 20,
+      fontFamily: 'Gotham Book'
     },
     [`&.${tableCellClasses.body}`]: {
       // borderColor:"white",
       // borderStyle: "solid",
       // borderColor: "pale",
       fontSize: 14,
+      fontFamily: 'Gotham Light'
     },
   }));
 
@@ -157,7 +159,7 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          
+          className="pagination"
         /> :
         <span align='center'> No Tickets raised!</span>
         }

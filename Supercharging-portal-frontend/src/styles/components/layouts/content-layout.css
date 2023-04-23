@@ -40,7 +40,7 @@
 .content__title {
   margin-top: 0;
 
-  /* color: var(--black); */
+  color: var(--black);
 }
 
 .content__body {
@@ -71,4 +71,11 @@
   .content__title {
     font-size: 2.4rem;
   }
+}
+
+.pagination .MuiTablePagination-displayedRows,
+.pagination .MuiTablePagination-selectRoot,
+.pagination .MuiTablePagination-select,
+.pagination .MuiTablePagination-selectLabel{
+  font-family: 'Gotham Book';
 }
