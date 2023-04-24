@@ -17,12 +17,13 @@ import { BorderStyle } from '@mui/icons-material';
 // import { makeStyles } from '@mui/material/styles';
 
 const columns = [
-  { id: 'siteName', label: 'Site Name', width: 100 },
-  { id: 'siteAddress', label: 'Site Address', width: 100 },
+  { id: 'siteName', label: 'Site Name', width: 10, align: 'left' },
+  { id: 'siteAddress', label: 'Site Address', width: 100, align: 'left' },
   {
     id: 'view',
     label: 'View',
-    width: 50
+    width: 100,
+    align: 'center'
   }
 ];
 
@@ -33,7 +34,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
       // backgroundColor: 'rgba(90, 80, 255, 0.85)',
       // color: theme.palette.common.white,
       fontSize: 20,
-      fontFamily: 'Gotham Book'
+      fontFamily: 'Gotham Book',
+      // align: 'center'
       // borderColor: "white"
     },
     [`&.${tableCellClasses.body}`]: {
