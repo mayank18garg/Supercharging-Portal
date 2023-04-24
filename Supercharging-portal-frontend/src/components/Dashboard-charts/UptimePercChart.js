@@ -19,10 +19,10 @@ const plugin = {
 }
 
 const placeholderData = [
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' }
+    { uptime_perc: 0,  week: '' },
+    { uptime_perc: 0,  week: '' },
+    { uptime_perc: 0,  week: '' },
+    { uptime_perc: 0,  week: '' }
 ]
 
 export const UptimePercChart = ({dateData, trt_Id}) => {

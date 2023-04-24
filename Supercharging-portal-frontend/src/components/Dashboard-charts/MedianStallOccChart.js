@@ -18,10 +18,10 @@ const plugin = {
     }
 }
 const placeholderData = [
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' }
+    { stallOccupancy: 0, median: 0, week: '' },
+    { stallOccupancy: 0, median: 0, week: '' },
+    { stallOccupancy: 0, median: 0, week: '' },
+    { stallOccupancy: 0, median: 0, week: '' }
 ]
 export const MedianStallOccChart = ({dateData, trt_Id}) => {
     // ChartJS.register(ChartDataLabels);

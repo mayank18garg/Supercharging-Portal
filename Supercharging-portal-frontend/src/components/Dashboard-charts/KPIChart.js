@@ -19,10 +19,10 @@ const plugin = {
 }
 
 const placeholderData = [
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' },
-    { new_user: 0, returning_user: 0, week: '' }
+    { cummulative_kwhs: 0, cummulative_sessions: 0, hour: '' },
+    { cummulative_kwhs: 0, cummulative_sessions: 0, hour: '' },
+    { cummulative_kwhs: 0, cummulative_sessions: 0, hour: '' },
+    { cummulative_kwhs: 0, cummulative_sessions: 0, hour: '' }
 ]
 
 export const KPIChart = ({dateData, trt_Id}) => {
