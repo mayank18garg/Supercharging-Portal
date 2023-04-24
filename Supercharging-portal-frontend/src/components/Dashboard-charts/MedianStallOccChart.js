@@ -78,7 +78,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                 font: {
                     // weight: 'bold',
                     size: 14,
-                    // family: "Gotham"
+                    family: "Gotham Light"
                 },
                 offset: 5,
                 // clamp: true
@@ -104,7 +104,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                 font: {
                     // weight: 'bold',
                     size: 14,
-                    // family: "Gotham"
+                    family: "Gotham Light"
                     // color: 'black'
                 },
             },
@@ -124,7 +124,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                     font:{
                         style: 'normal',
                         size: 14,
-                        // family: 'Gotham'
+                        family: 'Gotham Book'
                     }
                 },
                 grid: {
@@ -139,7 +139,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
                     font:{
                         style: 'normal',
                         size: 12,
-                        // family: 'Gotham'
+                        family: 'Gotham Light'
                     }
                 },
             },
@@ -172,7 +172,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
             legend: {
                 labels: {
                     font: {
-                        // family: "Gotham",
+                        family: "Gotham Light",
                         size: 16,
                         style: "normal"
                     },
