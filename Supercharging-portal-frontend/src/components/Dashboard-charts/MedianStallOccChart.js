@@ -92,9 +92,9 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
             categoryPercentage: 1,
             borderRadius: 5,
             fill: false,
-            backgroundColor: ["#E31937", "#E8E8EC"],
+            backgroundColor: ["#ACACB0", "#E8E8EC"],
             // borderColor: "#71B37C",
-            hoverBackgroundColor: ["#E31937", "#E8E8EC"],
+            hoverBackgroundColor: ["#ACACB0", "#E8E8EC"],
             // hoverBorderColor: "#71B37C",
             yAxisID: 'B',
             datalabels:{

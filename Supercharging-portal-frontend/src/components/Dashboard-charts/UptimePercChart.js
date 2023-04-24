@@ -92,7 +92,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
             // barPercentage: 0.5,
             borderRadius: 5,
             fill: false,
-            backgroundColor: ["#E31937", "#E8E8EC"],
+            backgroundColor: ["#ACACB0", "#E8E8EC"],
             // borderColor: "#71B37C",
             // hoverBackgroundColor: "#71B37C",
             // hoverBorderColor: "#71B37C",

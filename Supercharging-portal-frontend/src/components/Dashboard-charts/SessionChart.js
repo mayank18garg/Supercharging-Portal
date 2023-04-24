@@ -53,10 +53,10 @@ export const SessionChart = ({dateData, trt_Id}) => {
             categoryPercentage: 1,
             borderRadius: 5,
             fill: false,
-            backgroundColor: "#E31937",
-            borderColor: "#E31937",
-            hoverBackgroundColor: "#E31937",
-            hoverBorderColor: "#E31937"
+            backgroundColor: "#ACACB0",
+            borderColor: "#ACACB0",
+            hoverBackgroundColor: "#ACACB0",
+            hoverBorderColor: "#ACACB0"
         },
         {
             label: "Returning_User", 
