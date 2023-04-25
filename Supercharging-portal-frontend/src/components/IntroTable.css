@@ -1,0 +1,15 @@
+.table-wrapper table.my-table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table-wrapper table.my-table th,
+  .table-wrapper table.my-table td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .table-wrapper table.my-table th {
+    background-color: #f2f2f2;
+  }

@@ -125,7 +125,7 @@ textarea {
 }
 
 a {
-  color: var(--white);
+  /* color: var(--white); */
   text-decoration: none;
 }
 
@@ -157,3 +157,4 @@ code {
     overflow: hidden;
   }
 }
+
