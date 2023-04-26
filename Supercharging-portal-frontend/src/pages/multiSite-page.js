@@ -81,7 +81,7 @@ export const MultiSitePage = () => {
               business property. By sharing your webpage with the Supercharger network, you can help provide drivers a hospitable charging experience. Follow
               these <a href="https://www.tesla.com/sites/default/files/supercharger/email/Supercharger_Host_Content_Guideline_GB_Comp.pdf">content guidelines</a> and submit your webpage through this <a href="https://feedback.tesla.com/jfe/form/SV_9mBHIpXjb2ta4vA">form</a> to be featured in the Supercharger pop-up. </span>
         <h4>Access Codes</h4>
-        <span>Please submit or update access codes for restrooms or parking barriers <a href="https://feedback.tesla.com/jfe/form/SV_aVSMM9FxRjuNcTc">here </a>.</span>
+        <span>Please submit or update access codes for restrooms or parking barriers <a href="https://feedback.tesla.com/jfe/form/SV_aVSMM9FxRjuNcTc">here</a>.</span>
         <h4>Supercharger Contact Information </h4>
         <span>Below are ways you can react our team. Please note the phone and email are not for general public use and should be used only by property contacts.</span>
         <IntroTable />
