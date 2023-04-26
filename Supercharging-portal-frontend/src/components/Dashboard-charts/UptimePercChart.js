@@ -25,7 +25,7 @@ const placeholderData = [
     { uptime_perc: 0,  week: '' }
 ]
 
-export const UptimePercChart = ({dateData, trt_Id}) => {
+export const UptimePercChart = ({dateData, trt_Id, data4, setData4}) => {
     // ChartJS.register(ChartDataLabels);
     const [message, setMessage] = useState(placeholderData);
 
@@ -197,6 +197,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
     };
     
     if(!message.length) return <></>;
+    setData4(message);
     return (<div>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />

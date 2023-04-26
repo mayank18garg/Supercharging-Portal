@@ -60,6 +60,10 @@ export const DashboardPage = () => {
     end_date: getEndDate()
   });
   const [sidebarVisible, setSidebarVisible] = useState(false);
+  const [data1, setData1] = useState([]);
+  const [data2, setData2] = useState([]);
+  const [data3, setData3] = useState([]);
+  const [data4, setData4] = useState([]);
 
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
@@ -85,24 +89,24 @@ export const DashboardPage = () => {
             <button onClick={handleSidebarToggle}>Calendar</button>
             
             {/* {sidebarVisible && <div className="overlay" onClick={handleSidebarToggle}></div>} */}
-            <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} />
+            <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} data1={data1} data2={data2} data3={data3} data4={data4} />
           </div>
         
         <div className="charts-container">
           <div className= "chart-grid-kpi" >
-            <KPIChart dateData={dateData} trt_Id={location.state.site_id} />
+            <KPIChart dateData={dateData} trt_Id={location.state.site_id} data1={data1} setData1={setData1} />
           </div>
 
           <div className="chart-grid-session" >
-            <SessionChart dateData={dateData} trt_Id={location.state.site_id} />
+            <SessionChart dateData={dateData} trt_Id={location.state.site_id} data2={data2} setData2={setData2} />
           </div>
 
           <div className= "chart-grid-kpi">
-            <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} />
+            <MedianStallOccChart dateData={dateData} trt_Id={location.state.site_id} data3={data3} setData3={setData3} />
           </div>
 
           <div className= "chart-grid-kpi">
-            <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} />
+            <UptimePercChart dateData={dateData} trt_Id={location.state.site_id} data4={data4} setData4={setData4} />
           </div>
         </div>
       </div>

@@ -12,7 +12,7 @@ const placeholderData = [
     { new_user: 0, returning_user: 0, week: '' },
     { new_user: 0, returning_user: 0, week: '' }
 ]
-export const SessionChart = ({dateData, trt_Id}) => {
+export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
     // ChartJS.register(Colors);
     const [message, setMessage] = useState(placeholderData);
 
@@ -148,6 +148,7 @@ export const SessionChart = ({dateData, trt_Id}) => {
     };
     
     if(!message.length) return <></>;
+    setData2(message);
     return <div>
             <Bar data={userData} options={options} plugins={[ChartDataLabels]} />
             <div className="csv-link" ></div>

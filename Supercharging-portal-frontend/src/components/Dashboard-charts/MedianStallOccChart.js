@@ -23,7 +23,7 @@ const placeholderData = [
     { stallOccupancy: 0, median: 0, week: '' },
     { stallOccupancy: 0, median: 0, week: '' }
 ]
-export const MedianStallOccChart = ({dateData, trt_Id}) => {
+export const MedianStallOccChart = ({dateData, trt_Id, data3, setData3}) => {
     // ChartJS.register(ChartDataLabels);
     const [message, setMessage] = useState(placeholderData);
 
@@ -191,6 +191,7 @@ export const MedianStallOccChart = ({dateData, trt_Id}) => {
     };
     
     if(!message.length) return <></>;
+    setData3(message);
     return (<div>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
