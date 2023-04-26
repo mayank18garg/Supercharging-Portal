@@ -10,6 +10,7 @@ import { Mixpanel } from "../Mixpanel";
 import { useAuth0 } from "@auth0/auth0-react";
 import { MedianStallOccChart } from "../components/Dashboard-charts/MedianStallOccChart";
 import { UptimePercChart } from "../components/Dashboard-charts/UptimePercChart";
+import { Sidebar } from "../components/Dashboard-charts/Sidebar";
 
 const getStartDate = () => {
   const now = new Date();
@@ -37,7 +38,12 @@ lastSundayOfPreviousMonth.setDate(lastSundayOfPreviousMonth.getDate() - (lastSun
 return lastSundayOfPreviousMonth;
 
 }
-
+function formatDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
 
 export const DashboardPage = () => {
   const location = useLocation();
@@ -53,12 +59,17 @@ export const DashboardPage = () => {
     start_date: getStartDate(), 
     end_date: getEndDate()
   });
+  const [sidebarVisible, setSidebarVisible] = useState(false);
 
-  console.log("location_new:", location);
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
   }
 
+  
+
+  const handleSidebarToggle = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
 
   return (
     <PageLayout site_id={location.state.site_id} site_name={location.state.site_name} userEmail={location.state.userEmail}>
@@ -69,7 +80,12 @@ export const DashboardPage = () => {
         
         
           <div className="chart-grid-date">
-            <DateCalendar dateData = {dateData} setdateData = {setdateData} />
+            {/* <DateCalendar dateData = {dateData} setdateData = {setdateData} /> */}
+            <span> Date: {formatDate(dateData.start_date)} ~ {formatDate(dateData.end_date)} </span>
+            <button onClick={handleSidebarToggle}>Calendar</button>
+            
+            {/* {sidebarVisible && <div className="overlay" onClick={handleSidebarToggle}></div>} */}
+            <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} />
           </div>
         
         <div className="charts-container">

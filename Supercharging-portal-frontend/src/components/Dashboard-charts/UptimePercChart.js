@@ -200,7 +200,7 @@ export const UptimePercChart = ({dateData, trt_Id}) => {
     return (<div>
             {/* <Line data={userData} options={options} /> */}
             <Bar data={userData} options={options} plugins={[ChartDataLabels,plugin]} />
-            <CSVLink className="csv-link" data={message} style={{color: "black"}}>Download CSV</CSVLink>
+            <div className="csv-link" ></div>
         </div>);
 
 };
