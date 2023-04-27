@@ -23,7 +23,7 @@ export const DateCalendar = ({dateData, setdateData, sidebarVisible, setSidebarV
     <div className='field'>
         <DateRangePicker 
         cleanable={false}
-        hoverRange="week" 
+        // hoverRange="week"
         ranges={[]}
         placeholder="Select Date Range" 
         onOk={(value) => {setdateData( {start_date: value[0], end_date: value[1]} ); setSidebarVisible(!sidebarVisible) }}
