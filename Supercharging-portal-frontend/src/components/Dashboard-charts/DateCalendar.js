@@ -28,7 +28,7 @@ export const DateCalendar = ({dateData, setdateData, sidebarVisible, setSidebarV
         placeholder="Select Date Range" 
         onOk={(value) => {setdateData( {start_date: value[0], end_date: value[1]} ); setSidebarVisible(!sidebarVisible) }}
         isoWeek={true}
-        disabledDate={allowedMaxDays(56)}
+        // disabledDate={allowedMaxDays(56)}
         defaultValue={[dateData.start_date, dateData.end_date]}
         // style={{fontFamily: "Gotham"}} 
         placement='autoVerticalEnd'

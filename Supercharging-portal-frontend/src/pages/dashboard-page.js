@@ -97,7 +97,7 @@ export const DashboardPage = () => {
             <KPIChart dateData={dateData} trt_Id={location.state.site_id} data1={data1} setData1={setData1} />
           </div>
 
-          <div className="chart-grid-session" >
+          <div className="chart-grid-kpi" >
             <SessionChart dateData={dateData} trt_Id={location.state.site_id} data2={data2} setData2={setData2} />
           </div>
 

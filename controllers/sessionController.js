@@ -19,6 +19,18 @@ function getWeekEndDate(dateString) {
     return weekEnd.format('YYYY-MM-DD');
 }
 
+function getMonthStartDate(dateString) {
+    const date = moment(dateString, 'YYYY-MM--DD');
+    const monthStart = date.startOf('month');
+    return monthStart.format('YYYY-MM-DD');
+}
+
+function getMonthEndDate(dateString) {
+    const date = moment(dateString, 'YYYY-MM--DD');
+    const monthEnd = date.endOf('month');
+    return monthEnd.format('YYYY-MM-DD');
+}
+
 const getSessionData = asyncHandler(async (req, res) => {
     
     const trt_id = parseInt(req.query.trt_id);
@@ -86,10 +98,9 @@ const getSessionData = asyncHandler(async (req, res) => {
         }
         res.status(200).json(ans);
     }
-    else {
+    else if(diffInDays <= 56) {
         const week_start_date = getWeekStartDate(start_date);
         const week_end_date = getWeekEndDate(end_date);
-        // console.log("week_start_date:", week_start_date, week_end_date);
         const data = await sessionData.aggregate([
             {
                 "$match":{
@@ -185,6 +196,84 @@ const getSessionData = asyncHandler(async (req, res) => {
             })
         }
         res.status(200).json(ans);
+    }
+    else{
+        const month_start_date = getMonthStartDate(start_date);
+        const month_end_date = getMonthEndDate(end_date);
+        
+        const data = await sessionData.aggregate([
+            {
+                "$match":{
+                    "trt_id": trt_id,
+                    "charge_date":{
+                        "$gte": month_start_date,
+                        "$lte": month_end_date
+                    }
+                }
+            },
+            {
+                "$addFields":{
+                    "charge_date":{ "$toDate" : "$charge_date" },
+                    "min_charge_date":{ "$toDate":"$min_charge_date" }
+                }
+            },
+            {
+                "$addFields":{
+                    "month_bin_charge_date":{
+                        "$dateTrunc":{
+                            "date": "$charge_date",
+                            "unit" : "month",
+                        }
+                    },
+                    "month_bin_min_charge_date":{
+                        "$dateTrunc":{
+                            "date": "$min_charge_date",
+                            "unit": "month",
+                        }
+                    }
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "vehicle_id": "$vehicle_id",
+                        "month": "$month_bin_charge_date"
+                    },
+                    "month_bin_min_charge_date" : { "$first" : "$month_bin_min_charge_date"}
+                }
+            },
+            {
+                "$group": {
+                    "_id" : {
+                        "month" : "$_id.month"
+                    },
+                    "new_user" : {"$sum" : {"$cond" : { "if" : {"$eq": ["$_id.month", "$month_bin_min_charge_date"]}, "then":1, "else":0  }} },
+                    "distinct_user" : { "$sum" : 1}
+                }
+            },
+            {
+                "$project": {
+                    "_id" : 0,
+                    "month" : { "$dateToString" : {"date": "$_id.month", "format": "%Y-%m-%d"}},
+                    "new_user" : 1,
+                    "distinct_user" : 1
+                }
+            },
+            {
+                "$sort": { "month": 1 }
+            }
+        ]);
+
+        let ans = [];
+        for(let i=0; i<data.length; i++){
+            ans.push({
+                "new_user": data[i].new_user,
+                "returning_user": data[i].distinct_user - data[i].new_user,
+                "week": data[i].month
+            })
+        }
+        res.status(200).json(ans);
+
     }
 });
 
