@@ -1,47 +1,13 @@
 const asyncHandler = require("express-async-handler");
 const sessionData = require("../models/sessionModel");
-const moment = require('moment');
+// const moment = require('moment');
 
 const getSessionDatas = asyncHandler(async (req, res) => {
     const data = await sessionData.find().limit(10);
     res.status(200).json(data);
 });
 
-function getWeekStartDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM-DD');
-    const weekStart = date.isoWeekday(1);
-    return weekStart.format('YYYY-MM-DD');
-}
-
-function getWeekEndDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM-DD');
-    const weekEnd = date.isoWeekday(7);
-    return weekEnd.format('YYYY-MM-DD');
-}
-
-function getMonthStartDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM--DD');
-    const monthStart = date.startOf('month');
-    return monthStart.format('YYYY-MM-DD');
-}
-
-function getMonthEndDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM--DD');
-    const monthEnd = date.endOf('month');
-    return monthEnd.format('YYYY-MM-DD');
-}
-
-function getYearStartDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM--DD');
-    const yearStart = date.startOf('year');
-    return yearStart.format('YYYY-MM-DD');
-}
-
-function getYearEndDate(dateString) {
-    const date = moment(dateString, 'YYYY-MM--DD');
-    const yearEnd = date.endOf('year');
-    return yearEnd.format('YYYY-MM-DD');
-}
+const { getWeekStartDate, getWeekEndDate, getMonthStartDate, getMonthEndDate, getYearStartDate, getYearEndDate} = require("../Utils/getStartDate");
 
 const getSessionData = asyncHandler(async (req, res) => {
     
@@ -111,8 +77,10 @@ const getSessionData = asyncHandler(async (req, res) => {
         res.status(200).json(ans);
     }
     else if(diffInDays <= 56) {
+
         const week_start_date = getWeekStartDate(start_date);
         const week_end_date = getWeekEndDate(end_date);
+
         const data = await sessionData.aggregate([
             {
                 "$match":{
