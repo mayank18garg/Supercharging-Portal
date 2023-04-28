@@ -31,6 +31,18 @@ function getMonthEndDate(dateString) {
     return monthEnd.format('YYYY-MM-DD');
 }
 
+function getYearStartDate(dateString) {
+    const date = moment(dateString, 'YYYY-MM--DD');
+    const yearStart = date.startOf('year');
+    return yearStart.format('YYYY-MM-DD');
+}
+
+function getYearEndDate(dateString) {
+    const date = moment(dateString, 'YYYY-MM--DD');
+    const yearEnd = date.endOf('year');
+    return yearEnd.format('YYYY-MM-DD');
+}
+
 const getSessionData = asyncHandler(async (req, res) => {
     
     const trt_id = parseInt(req.query.trt_id);
@@ -197,7 +209,7 @@ const getSessionData = asyncHandler(async (req, res) => {
         }
         res.status(200).json(ans);
     }
-    else{
+    else if(diffInDays <= 365){
         const month_start_date = getMonthStartDate(start_date);
         const month_end_date = getMonthEndDate(end_date);
         
@@ -274,6 +286,84 @@ const getSessionData = asyncHandler(async (req, res) => {
         }
         res.status(200).json(ans);
 
+    }
+    else{
+        const year_start_date = getYearStartDate(start_date);
+        const year_end_date = getYearEndDate(end_date);
+
+        const data = await sessionData.aggregate([
+            {
+                "$match":{
+                    "trt_id": trt_id,
+                    "charge_date":{
+                        "$gte": year_start_date,
+                        "$lte": year_end_date
+                    }
+                }
+            },
+            {
+                "$addFields":{
+                    "charge_date":{ "$toDate" : "$charge_date" },
+                    "min_charge_date":{ "$toDate":"$min_charge_date" }
+                }
+            },
+            {
+                "$addFields":{
+                    "year_bin_charge_date":{
+                        "$dateTrunc":{
+                            "date": "$charge_date",
+                            "unit" : "year",
+                        }
+                    },
+                    "year_bin_min_charge_date":{
+                        "$dateTrunc":{
+                            "date": "$min_charge_date",
+                            "unit": "year",
+                        }
+                    }
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "vehicle_id": "$vehicle_id",
+                        "year": "$year_bin_charge_date"
+                    },
+                    "year_bin_min_charge_date" : { "$first" : "$year_bin_min_charge_date"}
+                }
+            },
+            {
+                "$group": {
+                    "_id" : {
+                        "year" : "$_id.year"
+                    },
+                    "new_user" : {"$sum" : {"$cond" : { "if" : {"$eq": ["$_id.year", "$year_bin_min_charge_date"]}, "then":1, "else":0  }} },
+                    "distinct_user" : { "$sum" : 1}
+                }
+            },
+            {
+                "$project": {
+                    "_id" : 0,
+                    "year" : { "$dateToString" : {"date": "$_id.year", "format": "%Y-%m-%d"}},
+                    "new_user" : 1,
+                    "distinct_user" : 1
+                }
+            },
+            {
+                "$sort": { "year": 1 }
+            }
+        ]);
+
+
+        let ans = [];
+        for(let i=0; i<data.length; i++){
+            ans.push({
+                "new_user": data[i].new_user,
+                "returning_user": data[i].distinct_user - data[i].new_user,
+                "week": data[i].year
+            })
+        }
+        res.status(200).json(ans);
     }
 });
 
