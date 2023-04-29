@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const sessionData = require("../models/sessionModel");
-// const moment = require('moment');
+const moment = require('moment');
 
 const getSessionDatas = asyncHandler(async (req, res) => {
     const data = await sessionData.find().limit(10);
@@ -246,10 +246,11 @@ const getSessionData = asyncHandler(async (req, res) => {
 
         let ans = [];
         for(let i=0; i<data.length; i++){
+            const dateObj = moment(data[i].month);
             ans.push({
                 "new_user": data[i].new_user,
                 "returning_user": data[i].distinct_user - data[i].new_user,
-                "week": data[i].month
+                "week": dateObj.format('MMM YY')
             })
         }
         res.status(200).json(ans);

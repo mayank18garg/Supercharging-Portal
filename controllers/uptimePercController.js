@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-
+const moment = require("moment");
 const uptimePercDailyData = require("../models/uptimePercDailyModel");
 const uptimePercWeeklyData = require("../models/uptimePercWeeklyModel");
 const uptimePercMonthlyData = require("../models/uptimePercMonthlyModel");
@@ -101,9 +101,10 @@ const getUptimePercData = asyncHandler(async (req, res) => {
         ]);
         let ans = [];
         for(let i=0; i<data.length; i++){
+            const dateObj = moment(data[i].event_dt);
             ans.push({
                 "uptime_perc": data[i].uptime_perc.toFixed(2),
-                "week": data[i].event_dt
+                "week": dateObj.format('MMM YY')
             })
         }
         res.status(200).json(ans);

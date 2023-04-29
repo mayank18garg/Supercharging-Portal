@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-
+const moment = require("moment");
 const medianStallOccDailyData = require("../models/medianStallOccDailyModel");
 const medianStallOccWeeklyData = require("../models/medianStallOccWeeklyModel");
 const medianStallOccMonthlyData = require("../models/medianStallOccMonthlyModel");
@@ -104,10 +104,11 @@ const getMedianStallOccData = asyncHandler(async (req, res) => {
         ]);
         let ans = [];
         for(let i=0; i<data.length; i++){
+            const dateObj = moment(data[i].event_dt);
             ans.push({
                 "median": data[i].median.toFixed(2),
                 "stallOccupancy": data[i].stall_occupancy,
-                "week": data[i].event_dt
+                "week": dateObj.format('MMM YY')
             })
         }
         res.status(200).json(ans);
