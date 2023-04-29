@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const medianStallOccSchema = mongoose.Schema({
+const medianStallOccDailySchema = mongoose.Schema({
     trt_id:{
         type: Number
     },
@@ -13,6 +13,6 @@ const medianStallOccSchema = mongoose.Schema({
     event_dt:{
         type: String
     }
-}, {collection: 'median_stallOccupancy'});
+}, {collection: 'median_stallOcc_Daily'});
 
-module.exports = mongoose.model("medianStallOccData", medianStallOccSchema);
+module.exports = mongoose.model("medianStallOccDailyData", medianStallOccDailySchema);
