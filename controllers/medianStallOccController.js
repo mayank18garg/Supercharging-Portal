@@ -70,10 +70,12 @@ const getMedianStallOccData = asyncHandler(async (req, res) => {
         ]);
         let ans = [];
         for(let i=0; i<data.length; i++){
+            const s_date = moment(data[i].event_dt).format('MM/DD');
+            const e_date = moment(getWeekEndDate(data[i].event_dt)).format('MM/DD');
             ans.push({
                 "median": data[i].median.toFixed(2),
                 "stallOccupancy": data[i].stall_occupancy,
-                "week": data[i].event_dt
+                "week": `${s_date} ~ ${e_date}`
             })
         }
         res.status(200).json(ans);

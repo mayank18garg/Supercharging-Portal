@@ -69,9 +69,11 @@ const getUptimePercData = asyncHandler(async (req, res) => {
         ]);
         let ans = [];
         for(let i=0; i<data.length; i++){
+            const s_date = moment(data[i].event_dt).format('MM/DD');
+            const e_date = moment(getWeekEndDate(data[i].event_dt)).format('MM/DD');
             ans.push({
                 "uptime_perc": data[i].uptime_perc.toFixed(2),
-                "week": data[i].event_dt
+                "week": `${s_date} ~ ${e_date}`
             })
         }
         res.status(200).json(ans);

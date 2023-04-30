@@ -169,10 +169,12 @@ const getSessionData = asyncHandler(async (req, res) => {
         // }
 
         for(let i=0; i<data.length; i++){
+            const s_date = moment(data[i].week).format('MM/DD');
+            const e_date = moment(getWeekEndDate(data[i].week)).format('MM/DD');
             ans.push({
                 "new_user": data[i].new_user,
                 "returning_user": data[i].distinct_user - data[i].new_user,
-                "week": data[i].week
+                "week": `${s_date} ~ ${e_date}`
             })
         }
         res.status(200).json(ans);
