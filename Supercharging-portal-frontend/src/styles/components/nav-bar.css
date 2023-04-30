@@ -260,6 +260,7 @@
   /* justify-content: flex-start; */
   /* align-items: center; */
   height: 100%;
+  min-width: 200px;
   /* margin-top: 8rem; */
   background-color: white;
   /* padding: 1rem; */
@@ -271,6 +272,7 @@
   position: sticky;
   top: 0;
   padding-top: 5%;
+  overflow: scroll;
   
 }
 
