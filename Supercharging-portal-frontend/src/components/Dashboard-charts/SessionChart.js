@@ -49,8 +49,8 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
             label: "New_User",
             data: message.map((data) => data.new_user),
             // backgroundColor: ["#7538EC"],
-            barPercentage: 1,
-            categoryPercentage: 1,
+            barPercentage: 0.8,
+            categoryPercentage: 0.8,
             borderRadius: 5,
             fill: false,
             backgroundColor: "#ACACB0",
@@ -62,8 +62,8 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
             label: "Returning_User", 
             data: message.map((data) => data.returning_user),
             // backgroundColor: "#800517",
-            barPercentage: 1,
-            categoryPercentage: 1,
+            barPercentage: 0.8,
+            categoryPercentage: 0.8,
             borderRadius: 5,
             fill: false,
             backgroundColor: "#E8E8EC",
@@ -77,6 +77,7 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
         events: [],
         scales: {
             x: {
+                stacked: true,
                 grid: {
                   offset: true,
                   display: false
@@ -103,7 +104,7 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
                 }
             },
             y: {
-                // stacked: true,
+                stacked: true,
                 ticks:{
                     color: "black"
                 },
