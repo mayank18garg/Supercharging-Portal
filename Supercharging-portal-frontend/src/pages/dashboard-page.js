@@ -103,7 +103,7 @@ export const DashboardPage = () => {
             {/* <button onClick={handleSidebarToggle}>Calendar</button> */}
             <DateCalendar dateData = {dateData} setdateData = {setdateData} />
             {/* <button onClick={handleExport} >Export Data to CSV</button> */}
-            <FaDownload onClick={handleExport} size={22} style={{marginLeft: "15px", marginTop: "5px"}} />
+            <FaDownload onClick={handleExport} size={22} style={{marginLeft: "15px", marginTop: "5px"}} color="#66666A" />
             <CSVLink data={data1} ref={csvLinkRef1} />
             <CSVLink data={data2} ref={csvLinkRef2} />
             <CSVLink data={data3} ref={csvLinkRef3} />

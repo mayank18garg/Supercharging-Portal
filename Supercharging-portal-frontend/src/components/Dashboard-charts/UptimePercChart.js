@@ -121,7 +121,7 @@ export const UptimePercChart = ({dateData, trt_Id, data4, setData4}) => {
         scales: {
             x: {
                 title:{
-                    text: "Starting date of a week",
+                    text: "Date range",
                     color: "black",
                     display: true,
                     font:{

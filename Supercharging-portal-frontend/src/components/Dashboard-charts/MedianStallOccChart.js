@@ -118,7 +118,7 @@ export const MedianStallOccChart = ({dateData, trt_Id, data3, setData3}) => {
         scales: {
             x: {
                 title:{
-                    text: "Starting date of a week",
+                    text: "Date range",
                     color: "black",
                     display: true,
                     font:{
