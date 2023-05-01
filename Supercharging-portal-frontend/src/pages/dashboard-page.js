@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { PageLayout } from "../components/page-layout";
 import { SessionChart } from "../components/Dashboard-charts/SessionChart";
 import { KPIChart } from "../components/Dashboard-charts/KPIChart";
@@ -11,6 +11,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { MedianStallOccChart } from "../components/Dashboard-charts/MedianStallOccChart";
 import { UptimePercChart } from "../components/Dashboard-charts/UptimePercChart";
 import { Sidebar } from "../components/Dashboard-charts/Sidebar";
+import { CSVLink } from "react-csv";
+import { FaDownload } from "react-icons/fa";
 
 const getStartDate = () => {
   const now = new Date();
@@ -65,6 +67,18 @@ export const DashboardPage = () => {
   const [data3, setData3] = useState([]);
   const [data4, setData4] = useState([]);
 
+  const csvLinkRef1 = useRef(null);
+  const csvLinkRef2 = useRef(null);
+  const csvLinkRef3 = useRef(null);
+  const csvLinkRef4 = useRef(null);
+
+  const handleExport = () => {
+    csvLinkRef1.current.link.click();
+    csvLinkRef2.current.link.click();
+    csvLinkRef3.current.link.click();
+    csvLinkRef4.current.link.click();
+  };
+
   if(location.state == null || location.state.site_id == null){
     return <Navigate replace to="/" />;
   }
@@ -85,11 +99,16 @@ export const DashboardPage = () => {
         
           <div className="chart-grid-date">
             {/* <DateCalendar dateData = {dateData} setdateData = {setdateData} /> */}
-            <span> Date: {formatDate(dateData.start_date)} ~ {formatDate(dateData.end_date)} </span>
-            <button onClick={handleSidebarToggle}>Calendar</button>
-            
-            {/* {sidebarVisible && <div className="overlay" onClick={handleSidebarToggle}></div>} */}
-            <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} data1={data1} data2={data2} data3={data3} data4={data4} />
+            {/* <span> Date: {formatDate(dateData.start_date)} ~ {formatDate(dateData.end_date)} </span> */}
+            {/* <button onClick={handleSidebarToggle}>Calendar</button> */}
+            <DateCalendar dateData = {dateData} setdateData = {setdateData} />
+            {/* <button onClick={handleExport} >Export Data to CSV</button> */}
+            <FaDownload onClick={handleExport} size={22} style={{marginLeft: "15px", marginTop: "5px"}} />
+            <CSVLink data={data1} ref={csvLinkRef1} />
+            <CSVLink data={data2} ref={csvLinkRef2} />
+            <CSVLink data={data3} ref={csvLinkRef3} />
+            <CSVLink data={data4} ref={csvLinkRef4} /> 
+            {/* <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} data1={data1} data2={data2} data3={data3} data4={data4} /> */}
           </div>
         
         <div className="charts-container">

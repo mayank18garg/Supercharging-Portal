@@ -3,9 +3,10 @@
 
 .chart-grid-date{
     display: flex;
-    justify-content: space-around;
+    justify-content:flex-end;
     width: 100%;
     padding-top: 2%;
+    padding-right: 4%;
     /* background-color: aqua; */
     /* align-self:center; */
 }
