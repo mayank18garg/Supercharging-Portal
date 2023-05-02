@@ -6,11 +6,11 @@ export const SideNavBar = ({site_id, site_name, viewSiteEnable, userEmail, isAdm
     return ( 
         viewSiteEnable ? 
         <div className="side-nav-bar__container">
-            <SideNavBarTab path="/" label="Home Page"  />
-            {/* {   isAdmin ?
+            <SideNavBarTab path="/" label="Homepage"  />
+            {   isAdmin ?
                     <SideNavBarTab path="/onboarding" label="Onboarding" isAdmin={isAdmin} />
                     : null
-            } */}
+            }
         </div> :
         <div className="side-nav-bar__container">
             {/* <SideNavBarTab path="/home" label="Home" site_id={site_id} site_name={site_name} userEmail={userEmail} /> */}

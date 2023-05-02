@@ -83,7 +83,7 @@ export const OnBoardingForm = () => {
         settrtlist({...trtlist, phone: data});
     }
     return (
-        <CustomProvider theme='dark'>
+        <CustomProvider theme='lite'>
             <Form ref={formRef} model={model} onChange={setFormValue} formValue={formValue}>
                 <TextField name="userEmail" label="Email" />
             </Form>
@@ -123,7 +123,7 @@ export const OnBoardingForm = () => {
                 />
             </div>
             <ButtonToolbar>
-                <Button appearance='primary' type="submit" onClick={handleSubmit}>
+                <Button appearance='primary' type="submit" onClick={handleSubmit} color="#3885ff">
                     Submit
                 </Button>
             </ButtonToolbar>

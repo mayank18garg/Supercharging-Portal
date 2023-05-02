@@ -16,19 +16,20 @@ import {NavLink} from "react-router-dom"
 // import { makeStyles } from '@mui/material/styles';
 
 const columns = [
-  { id: 'siteName', label: 'Site Name', width: 100 },
-  { id: 'siteAddress', label: 'Site Address', width: 100 },
+  { id: 'siteName', label: 'Site Name', width: 10, align: 'left' },
+  { id: 'siteAddress', label: 'Site Address', width: 100, align: 'left' },
   {
     id: 'userEmail',
     label: 'User Email',
     width: 100,
-    // align: 'right',
+    align: 'left',
     // format: (value) => value.toLocaleString('en-US'),
   },
   {
     id: 'view',
     label: 'View',
-    width: 50
+    width: 50,
+    align: 'center'
   }
 ];
 
@@ -36,12 +37,14 @@ const columns = [
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
-      backgroundColor: 'rgba(90, 80, 255, 0.85)',
-      color: theme.palette.common.white,
-      fontSize: 20
+      // backgroundColor: 'rgba(90, 80, 255, 0.85)',
+      // color: theme.palette.common.white,
+      fontSize: 20,
+      fontFamily: 'Gotham Book'
     },
     [`&.${tableCellClasses.body}`]: {
       fontSize: 14,
+      fontFamily: 'Gotham Book'
     },
   }));
 
@@ -86,8 +89,8 @@ export default function ViewSiteAdmin() {
   };
 
   return (
-    <Paper sx={{ width: 700, overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 4400 }}>
+    <Paper sx={{ width: 1000, overflow: 'hidden', background:"transparent", borderColor: "pale", borderStyle: "solid" }}>
+      <TableContainer sx={{ maxHeight: 4400, borderColor:"white", fontFamily: "Gotham Light" }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
@@ -112,7 +115,7 @@ export default function ViewSiteAdmin() {
                       if(column.id === 'view'){
                         return(
                           <StyledTableCell key={column.id} align={column.align}>
-                            <NavLink to='/home' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName, userEmail: row.userEmail}}> View </NavLink>
+                            <NavLink to='/dashboard' style={{color:'black'}} state={{site_id: row.trt_id, site_name: row.siteName, userEmail: row.userEmail}}> View </NavLink>
                           </StyledTableCell>
                         );
                       }
@@ -143,7 +146,7 @@ export default function ViewSiteAdmin() {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-          
+          className="pagination"
         /> :
         <PageLoader />
         }
