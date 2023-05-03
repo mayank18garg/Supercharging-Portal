@@ -5,14 +5,13 @@ const issueTicketData = require("../models/issueTicketModel");
 const transporter = require("./emailServer");
 
 const createTicket = asyncHandler(async (req, res) => {
-    const {userEmail, trt_id} = req.body;
-    console.log("email:", userEmail);
-    console.log("files:", req.file);
-    console.log("body:", req.body);
+    // const {userEmail, trt_id} = req.body;
+    
     // console.log(req.formdata);
     // console.log("mayank", req.body.formValue.file);
     // console.log("sanket", req.body);
-    // const {userEmail, title, trt_id, site_name} = req.body;
+    const {userEmail, title, site_name} = req.body;
+    const trt_id = parseInt(req.body.trt_id);
     // const imageBuffer = Buffer.from(req.body.formValue.file);
     // console.log(imageBuffer);
     // console.log(req.body);
@@ -24,16 +23,16 @@ const createTicket = asyncHandler(async (req, res) => {
     //     res.status(400);
     //     throw new Error("All fields are mandatory");
     // }
-    // const status = "In Progress";
+    const status = "In Progress";
 
-    // const data = await issueTicketData.create({
-    //     userEmail,
-    //     status,
-    //     title,
-    //     timestamp: new Date(),
-    //     trt_id,
-    //     site_name
-    // });
+    const data = await issueTicketData.create({
+        userEmail,
+        status,
+        title,
+        timestamp: new Date(),
+        trt_id,
+        site_name
+    });
 
     res.status(201).json({});
 
