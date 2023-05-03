@@ -47,7 +47,7 @@ export const SiteInfoForm = ({trt_id, setSite_name, userEmail}) => {
         phone: ""
     });
     const toaster = useToaster();
-    const placement = 'topCenter';
+    const placement = 'topEnd';
     const formRef = useRef();
     useEffect(() => {
         let isMounted = true;

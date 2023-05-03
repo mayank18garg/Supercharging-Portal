@@ -52,7 +52,7 @@ export const ContactInformation = ({trt_id, userEmail}) => {
         address: ""
     });
     const toaster = useToaster();
-    const placement = 'topCenter';
+    const placement = 'topEnd';
     const formRef = useRef();
 
     const handleContactType = (value) => {
