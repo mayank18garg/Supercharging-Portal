@@ -69,7 +69,8 @@ export const sendFormData = async ({formValue, userEmail, trt_id, site_name, fil
   formdata.append("userEmail", userEmail);
   formdata.append("trt_id", trt_id);
   formdata.append("site_name", site_name);
-  formdata.append("formValue", formValue);
+  formdata.append("title", formValue.title);
+  formdata.append("description", formValue.description);
   formdata.append("file", filelist);
   // console.log("FileValue:", filelist);
   // console.log(formdata);

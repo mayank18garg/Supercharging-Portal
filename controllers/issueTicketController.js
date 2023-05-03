@@ -10,8 +10,11 @@ const createTicket = asyncHandler(async (req, res) => {
     // console.log(req.formdata);
     // console.log("mayank", req.body.formValue.file);
     // console.log("sanket", req.body);
+    // console.log("sankejltj;lafh;lahjf;");
     const {userEmail, title, site_name} = req.body;
+    // console.log(userEmail, formValue, site_name);
     const trt_id = parseInt(req.body.trt_id);
+    // console.log(trt_id);
     // const imageBuffer = Buffer.from(req.body.formValue.file);
     // console.log(imageBuffer);
     // console.log(req.body);
@@ -23,6 +26,8 @@ const createTicket = asyncHandler(async (req, res) => {
     //     res.status(400);
     //     throw new Error("All fields are mandatory");
     // }
+    console.log(userEmail, title, site_name, trt_id);
+    // console.log("mayank####$$",formValue);
     const status = "In Progress";
 
     const data = await issueTicketData.create({
@@ -35,24 +40,37 @@ const createTicket = asyncHandler(async (req, res) => {
     });
 
     res.status(201).json({});
-
-    const message = {
-        from: "no-reply@supercharging-portal.com",
-        to: "mgarg20@asu.edu",
-        subject: `Issue Ticket from ${userEmail}`,
-        text: emailText,
-        attachments: [{
-            filename: req.file.originalname,
-            content: req.file.buffer,
-            // encoding: 'base64'
-        }]
-    };
+    if(req.file){
+        const message = {
+            from: "no-reply@supercharging-portal.com",
+            to: "mgarg20@asu.edu",
+            subject: `Issue Ticket from ${userEmail}`,
+            text: emailText,
+            attachments: [{
+                filename: req.file.originalname,
+                content: req.file.buffer,
+                // encoding: 'base64'
+            }]
+        };
+        transporter.sendMail(message).then(info => {
+            console.log({info});
+          }).catch(console.error);
+    }
+    else{
+        const message = {
+            from: "no-reply@supercharging-portal.com",
+            to: "mgarg20@asu.edu",
+            subject: `Issue Ticket from ${userEmail}`,
+            text: emailText,
+        };
+        transporter.sendMail(message).then(info => {
+            console.log({info});
+          }).catch(console.error);
+    }
     // // const stringMessage = JSON.stringify(message);
     // // console.log(stringMessage);
     // transporter.verify().then(console.log).catch(console.error);
-    transporter.sendMail(message).then(info => {
-        console.log({info});
-      }).catch(console.error);
+    
 
     
 });
