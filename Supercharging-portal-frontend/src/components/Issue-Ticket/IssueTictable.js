@@ -161,7 +161,7 @@ export default function IssueTicTable({trt_id, issueTicketData}) {
           onRowsPerPageChange={handleChangeRowsPerPage}
           className="pagination"
         /> :
-        <span align='center'> No Tickets raised!</span>
+        <div style={{justifyContent: 'center', display: 'flex' }}> No Tickets found</div>
         }
     </Paper>
   );
