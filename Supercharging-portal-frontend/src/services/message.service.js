@@ -316,3 +316,25 @@ export const getUptimePercData = async ({dateData, trt_Id}) => {
     error,
   };
 };
+
+export const sendFeedbackForm = async({formValue, userEmail, trt_id, site_name}) => {
+  const config = {
+    url: `${apiServerUrl}/api/issueTicket/feedback`,
+    method: "PUT",
+    data:{
+      formValue,
+      userEmail,
+      trt_id,
+      site_name
+    },
+    headers:{
+      "Content-Type": "application/json"
+    }
+  }
+  const {data, error} = await callExternalApi({config});
+
+  return {
+    data: data || null,
+    error,
+  }
+}

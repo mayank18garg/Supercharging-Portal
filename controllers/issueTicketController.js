@@ -89,4 +89,26 @@ const getissueTickets = asyncHandler(async (req, res) => {
     res.status(200).json(data);
 });
 
-module.exports = {createTicket, getissueTickets} ;
+
+const feedbackForm = asyncHandler(async (req, res) => {
+
+    const emailText = JSON.stringify(req.body);
+    console.log("Hello hello hello\n");
+    const message = {
+        from: "no-reply@supercharging-portal.com",
+        to: "mgarg20@asu.edu",
+        subject: `Feedback`,
+        text: emailText
+    };
+    // // const stringMessage = JSON.stringify(message);
+    // // console.log(stringMessage);
+    transporter.verify().then(console.log).catch(console.error);
+    transporter.sendMail(message).then(info => {
+        console.log({info});
+      }).catch(console.error);
+
+    res.status(200).json({});
+
+});
+
+module.exports = {createTicket, getissueTickets, feedbackForm} ;

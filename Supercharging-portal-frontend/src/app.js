@@ -17,6 +17,7 @@ import { PrivateRoute } from "./utils/private-route";
 import {Chart as ChartJS} from "chart.js/auto";
 import { Colors } from "chart.js/auto";
 import { OnboardingPage } from "./pages/onboarding-page";
+import { FeedbackFormPage } from "./pages/feedback-page";
 
 export const App = () => {
   ChartJS.register(Colors);
@@ -60,6 +61,10 @@ export const App = () => {
       />
       <Route path="*" element={<NotFoundPage />} />
       <Route path="/callback" element={<CallbackPage />} />
+      <Route
+        path="/feedback"
+        element={<AuthenticationGuard component={FeedbackFormPage} />}
+      />
     </Routes>
   );
 };

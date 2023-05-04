@@ -18,6 +18,7 @@ export const SideNavBar = ({site_id, site_name, viewSiteEnable, userEmail, isAdm
             <SideNavBarTab path="/reportIssue" label="Report an Issue" site_id={site_id} site_name={site_name} userEmail={userEmail} />
             <SideNavBarTab path="/protected" label="Contact Information" site_id={site_id} site_name={site_name} userEmail={userEmail} />
             <SideNavBarTab path="/siteInfo" label="Site Information" site_id={site_id} site_name={site_name} userEmail={userEmail} />
+            <SideNavBarTab path="/feedback" label="Feedback" site_id={site_id} site_name={site_name} userEmail={userEmail} />
         </div>
     );
 }

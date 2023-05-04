@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Uploader } from 'rsuite';
-import { sendFormData } from '../services/message.service';
-
+// import { sendFormData } from '../services/message.service';
+import { sendFeedbackForm } from '../services/message.service';
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
 
 
@@ -50,7 +50,7 @@ export const FeedbackForm = ({trt_id, site_name, userEmail}) => {
             console.error("Form Error");
             return;
         }
-        sendFormData({formValue, userEmail, trt_id, site_name }).then((response) => {
+        sendFeedbackForm({formValue, userEmail, trt_id, site_name }).then((response) => {
           if(response.data == null){
             toaster.push(errormessage,{placement, duration: 5000} );
           }
