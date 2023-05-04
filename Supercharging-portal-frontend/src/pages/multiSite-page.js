@@ -74,7 +74,7 @@ export const MultiSitePage = () => {
         <li>Providing access to amenities including restrooms.</li>
         <li>Reserving charging bay parking exclusively for Tesla cars.</li>
         <h4>Communication Guidelines </h4>
-        <span>These are the <a target="_blank" rel="noopener noreferrer" href="https://teslamotorsinc.sharepoint.com/sites/MissioncontrolEMEA/Communication/Forms/AllItems.aspx?id=%2Fsites%2FMissioncontrolEMEA%2FCommunication%2FLandlord%20Engagement%20and%20Communications%2FSite%20host%20communication%20guidelines%2FEU%20SuC%20Communication%20Guidelines%2Epdf&parent=%2Fsites%2FMissioncontrolEMEA%2FCommunication%2FLandlord%20Engagement%20and%20Communications%2FSite%20host%20communication%20guidelines&p=true&ga=1">guidelines</a> to ensure a smooth opening and protect confidential information.</span>
+        <span>These are the <a target="_blank" rel="noopener noreferrer" href="https://www.tesla.com/sites/default/files/files/EU_SuC_CommunicationGuidelines.pdf">guidelines</a> to ensure a smooth opening and protect confidential information.</span>
         {/* <h2 style={{textAlign: 'center', fontWeight: 'bold'}}> Content in Progress</h2> */}
         <h4>Supercharger Host Amenities </h4>
         <span>Drivers can now tap the new Supercharger Host Amenities icon, in the Supercharger pop-up, to learn about the amenities offered at your
