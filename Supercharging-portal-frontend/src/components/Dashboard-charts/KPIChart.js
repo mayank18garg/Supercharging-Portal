@@ -60,7 +60,7 @@ export const KPIChart = ({dateData, trt_Id, data1, setData1}) => {
         labels: message.map((data) => data.hour),
         datasets:[
         {
-            label: "Total Kwhs",
+            label: "Total DC Kwhs",
             type: "line",
             data: message.map((data) => data.cummulative_kwhs),
             fill: false,
