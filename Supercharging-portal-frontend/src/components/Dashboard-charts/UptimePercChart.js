@@ -110,8 +110,8 @@ export const UptimePercChart = ({dateData, trt_Id, data4, setData4}) => {
                 },
             },
             order: 2,
-            barPercentage: 1,
-            categoryPercentage: 1
+            barPercentage: 0.8,
+            categoryPercentage: 0.8
         }
         ]
     };
