@@ -29,7 +29,7 @@ export const SiteInfoPage = () => {
     <div className="content-layout">
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Site Information</h2>
       <div className="siteInfoForm">
-        <SiteInfoForm trt_id={location.state.site_id} setSite_name={setSite_name} userEmail={location.state.userEmail} />
+        <SiteInfoForm trt_id={location.state.site_id} setSite_name={setSite_name} userEmail={location.state.userEmail} user={user.email} />
       </div>
     </div>
     </PageLayout>);

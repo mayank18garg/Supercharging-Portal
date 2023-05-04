@@ -33,7 +33,7 @@ export const FeedbackFormPage = () => {
       <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Feedback Form</h2>
       <div className="form-grid-container">
         <div className="reportIssueForm">
-          <FeedbackForm trt_id={trt_id} site_name={site_name} userEmail={location.state.userEmail} />
+          <FeedbackForm trt_id={trt_id} site_name={site_name} userEmail={location.state.userEmail} user={user.email} />
           </div>
       </div>   
       </div>

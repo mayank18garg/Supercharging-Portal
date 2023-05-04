@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Uploader } from 'rsuite';
 import { sendFormData } from '../../services/message.service';
+import { Mixpanel } from '../../Mixpanel';
 
 const Textarea = React.forwardRef((props, ref) => <Input {...props} as="textarea" ref={ref} />);
 
@@ -54,7 +55,7 @@ const maxFileErrormessage = (
   </Message>
 );
 
-export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData, userEmail}) => {
+export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData, userEmail, user}) => {
     // const { user } = useAuth0();
     // const userEmail = user.name;
     const [formValue, setFormValue] = useState({
@@ -111,6 +112,9 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
           description: ""
           // file: null
         });         
+        Mixpanel.identify(user);
+        Mixpanel.track('Issue ticket Submit');
+        Mixpanel.people.set({$email: user});
 
     }
 

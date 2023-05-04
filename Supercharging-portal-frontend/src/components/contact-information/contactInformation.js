@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, useToaster, Radio, RadioGroup, SelectPicker } from 'rsuite';
 import { updateContactInfo } from '../../services/message.service';
 import ReactGA from 'react-ga4';
-
+import { Mixpanel } from '../../Mixpanel';
 
 const { StringType } = Schema.Types;
 
@@ -89,6 +89,9 @@ export const ContactInformation = ({trt_id, userEmail}) => {
         }).catch((error) => {
             console.log(error);
         });
+        Mixpanel.identify(userEmail);
+        Mixpanel.track('Update Contact Info Submit');
+        Mixpanel.people.set({$email: userEmail});
 
     }
 

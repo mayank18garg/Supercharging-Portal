@@ -3,6 +3,7 @@ import { Form, Button, ButtonToolbar, Schema, CustomProvider, Input, Message, us
 import { getSiteInfo } from '../../services/message.service';
 // import { useAuth0 } from '@auth0/auth0-react';
 import { updateSiteInfo } from '../../services/message.service';
+import { Mixpanel } from '../../Mixpanel';
 
 const { StringType } = Schema.Types;
 
@@ -35,7 +36,7 @@ const errormessage = (
   </Message>
 );
 
-export const SiteInfoForm = ({trt_id, setSite_name, userEmail}) => {
+export const SiteInfoForm = ({trt_id, setSite_name, userEmail, user}) => {
     // const { user } = useAuth0();
     // const userEmail = user.name;
     const [message, setMessage] = useState({});
@@ -107,6 +108,9 @@ export const SiteInfoForm = ({trt_id, setSite_name, userEmail}) => {
         }).catch((error) => {
             console.log(error);
         });
+        Mixpanel.identify(user);
+        Mixpanel.track('Update Site info Submit');
+        Mixpanel.people.set({$email: user});
     }
 
     return (

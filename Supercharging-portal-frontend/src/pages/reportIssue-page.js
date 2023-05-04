@@ -36,7 +36,7 @@ export const ReportIssuePage = () => {
       <div className="form-grid-container">
         <IssueTictable trt_id={trt_id} issueTicketData={issueTicketData} />
         <div className="reportIssueForm">
-          <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} userEmail={location.state.userEmail} />
+          <FormComp trt_id={trt_id} site_name={site_name} issueTicketData={issueTicketData} setissueTicketData={setissueTicketData} userEmail={location.state.userEmail} user={user.email} />
           </div>
         {/* <div className="content__body">
           <p id="page-description">

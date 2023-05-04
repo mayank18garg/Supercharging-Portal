@@ -26,13 +26,8 @@ export const ProtectedPage = () => {
        <SideNavBar site_id={location.state.site_id} site_name={location.state.site_name}  userEmail={location.state.userEmail} />
        <div className="content-layout">
         <h2 id="page-title" className="content__title" style={{textAlign: 'center'}}> Contact Information</h2>
-        {/* <p id="page-description">
-          <span> You can Reach Tesla Supercharging here</span>
-          <span align="center"> 1. Email: abc@tesla.com </span>
-          <span align="center"> 2. Phone: 123 456 7890 </span>
-        </p> */}
         <div className="contactInfoForm">
-          <ContactInformation trt_id={location.state.site_id} />
+          <ContactInformation trt_id={location.state.site_id} userEmail={user.email} />
         </div>
 
     </div>

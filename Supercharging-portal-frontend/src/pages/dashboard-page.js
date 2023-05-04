@@ -77,6 +77,9 @@ export const DashboardPage = () => {
     csvLinkRef2.current.link.click();
     csvLinkRef3.current.link.click();
     csvLinkRef4.current.link.click();
+    Mixpanel.identify(user.email);
+    Mixpanel.track('Export Dashboard Data');
+    Mixpanel.people.set({$email: user.email});
   };
 
   if(location.state == null || location.state.site_id == null){
