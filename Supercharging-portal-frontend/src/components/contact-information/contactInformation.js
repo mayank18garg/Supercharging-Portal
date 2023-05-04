@@ -14,7 +14,7 @@ const model = Schema.Model({
   address: StringType().isRequired('This field is required.')
 });
 
-const contactTypeData = ['Business Partner', 'Legal Notice Address', 'Emergency', 'Prop Mgt'].map(
+const contactTypeData = ['Business contact', 'On-site contact', 'Technical contact', 'Other contact'].map(
   item => ({label: item, value: item})
 );
 
@@ -43,7 +43,7 @@ const errormessage = (
 
 export const ContactInformation = ({trt_id, userEmail}) => {
 
-    const [contactType, setContactType] = useState("Business Partner");
+    const [contactType, setContactType] = useState("Business contact");
     const [formValue, setFormValue] = useState({
         firstName:"",
         lastName: "",
@@ -112,7 +112,7 @@ export const ContactInformation = ({trt_id, userEmail}) => {
                 <TextField name="email" label="Email" />
                 <TextField name="address" label="Address" />
                 <TextField name="contactType" label="Contact Type" accepter={SelectPicker} block={true} data={contactTypeData} onChange={handleContactType}
-                  defaultValue="Business Partner"
+                  defaultValue="Business contact"
                   value={contactType}
                   cleanable={false}
                   searchable={false}
