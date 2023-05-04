@@ -60,7 +60,7 @@ export const KPIChart = ({dateData, trt_Id, data1, setData1}) => {
         labels: message.map((data) => data.hour),
         datasets:[
         {
-            label: "Total_Kwhs", 
+            label: "Total Kwhs",
             type: "line",
             data: message.map((data) => data.cummulative_kwhs),
             fill: false,
@@ -87,7 +87,7 @@ export const KPIChart = ({dateData, trt_Id, data1, setData1}) => {
             }
         },
         {
-            label: "Total_Sessions",
+            label: "Total Sessions",
             type: "bar",
             data: message.map((data) => data.cummulative_sessions),
             // barPercentage: 0.5,

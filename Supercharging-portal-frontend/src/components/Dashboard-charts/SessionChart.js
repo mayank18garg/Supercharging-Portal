@@ -46,7 +46,7 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
     const userData = {
         labels: message.map((data) => data.week),
         datasets:[{
-            label: "New_User",
+            label: "New Users",
             data: message.map((data) => data.new_user),
             // backgroundColor: ["#7538EC"],
             barPercentage: 0.8,
@@ -59,7 +59,7 @@ export const SessionChart = ({dateData, trt_Id, data2, setData2}) => {
             hoverBorderColor: "#ACACB0"
         },
         {
-            label: "Returning_User", 
+            label: "Returning Users",
             data: message.map((data) => data.returning_user),
             // backgroundColor: "#800517",
             barPercentage: 0.8,
