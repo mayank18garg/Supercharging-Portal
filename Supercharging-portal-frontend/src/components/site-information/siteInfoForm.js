@@ -117,7 +117,7 @@ export const SiteInfoForm = ({trt_id, setSite_name, userEmail, user}) => {
         <CustomProvider theme='lite'>
             <Form ref={formRef} model={model} onChange={setFormValue} formValue={formValue} readOnly={readOnly}>
                 <TextField name="siteName" label="Property Name" />
-                <TextField name="siteWebsite" label="Commerical Website" />
+                <TextField name="siteWebsite" label="Website" />
                 <TextField name="siteAddress" label="Site Address" />
                 <TextField name="phone" label="Phone" />
                 <ButtonToolbar>
