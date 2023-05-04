@@ -107,10 +107,10 @@ export const DashboardPage = () => {
             <DateCalendar dateData = {dateData} setdateData = {setdateData} />
             {/* <button onClick={handleExport} >Export Data to CSV</button> */}
             <FaDownload onClick={handleExport} size={22} style={{marginLeft: "15px", marginTop: "5px"}} color="#66666A" />
-            <CSVLink data={data1} ref={csvLinkRef1} />
-            <CSVLink data={data2} ref={csvLinkRef2} />
-            <CSVLink data={data3} ref={csvLinkRef3} />
-            <CSVLink data={data4} ref={csvLinkRef4} /> 
+            <CSVLink data={data1} ref={csvLinkRef1} filename={"DCKwh_Sessions.csv"} />
+            <CSVLink data={data2} ref={csvLinkRef2} filename={"New_Returning_Users.csv"}/>
+            <CSVLink data={data3} ref={csvLinkRef3} filename={"MedianDuration_StallOccupancy.csv"}/>
+            <CSVLink data={data4} ref={csvLinkRef4} filename={"Uptime%.csv"}/> 
             {/* <Sidebar sidebarVisible={sidebarVisible} setSidebarVisible={setSidebarVisible} dateData= {dateData} setdateData={setdateData} data1={data1} data2={data2} data3={data3} data4={data4} /> */}
           </div>
         

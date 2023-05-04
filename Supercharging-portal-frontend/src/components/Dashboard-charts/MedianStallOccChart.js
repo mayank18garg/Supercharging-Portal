@@ -85,7 +85,7 @@ export const MedianStallOccChart = ({dateData, trt_Id, data3, setData3}) => {
             }
         },
         {
-            label: "Median",
+            label: "Median Session Duration",
             type: "bar",
             data: message.map((data) => data.median),
             barPercentage: 0.8,
