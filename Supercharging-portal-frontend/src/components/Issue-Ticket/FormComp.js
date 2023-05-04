@@ -120,7 +120,7 @@ export const FormComp = ({trt_id, site_name, issueTicketData, setissueTicketData
         <TextField name="title" label="Title" />
         <TextField name="description" label="Description" accepter={Textarea} rows={5}/>
         {/* <Uploader action="" onChange={handleFileUpload} multiple={false} /> */}
-        <TextField name="file" label="Upload" accepter={Uploader} onChange={handleFileUpload} action="#" autoUpload={false} shouldQueueUpdate={handleShouldUpload} />
+        <TextField name="file" label="Attachment" accepter={Uploader} onChange={handleFileUpload} action="#" autoUpload={false} shouldQueueUpdate={handleShouldUpload} />
         <ButtonToolbar>
             <Button appearance="primary" type="submit">
             Submit
