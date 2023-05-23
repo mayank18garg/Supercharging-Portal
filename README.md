@@ -1,4 +1,4 @@
-# Technology Stack Employed for Development of the Supercharging Portal for Landlords
+# Technology Stack Employed for Development of the Supercharging Portal for the Landlords
 ### 1. Tech Stack
 To build the Supercharging Portal for Landlords, I leveraged the power of the MERN stack, which consists of MongoDB, Express.js, React, and Node.js. This technology stack provided a robust and scalable platform to build the application from scratch.
 
